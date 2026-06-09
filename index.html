@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Amber Gift Experience — a sentimental dark romantic digital castle gift."
+    />
+    <meta name="theme-color" content="#09070a" />
+    <title>Amber Gift Experience</title>
+    <style>
+      :root {
+        --black: #040305;
+        --wine: #6f1727;
+        --gold: #c6a15a;
+        --gold-bright: #f0d891;
+        --ivory: #f8ecd2;
+        --muted: #c9bda4;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ivory);
+        background: var(--black);
+      }
+
+      .static-root-fallback,
+      .no-js-fallback {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 1.25rem;
+        color: var(--ivory);
+        background:
+          radial-gradient(circle at 50% 16%, rgba(240, 216, 145, 0.14), transparent 16rem),
+          radial-gradient(circle at 50% 80%, rgba(111, 23, 39, 0.38), transparent 24rem),
+          linear-gradient(180deg, #040305, #120d13 58%, #040305);
+        font-family: Georgia, 'Times New Roman', serif;
+        text-align: center;
+      }
+
+      .static-hero-card,
+      .static-room-card {
+        width: min(100%, 45rem);
+        padding: clamp(1.25rem, 6vw, 3rem);
+        border: 1px solid rgba(198, 161, 90, 0.34);
+        border-radius: 2rem;
+        background: rgba(11, 8, 13, 0.84);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58), 0 0 54px rgba(198, 161, 90, 0.18);
+      }
+
+      .static-eyebrow {
+        margin: 0 0 0.75rem;
+        color: var(--gold-bright);
+        font: 800 0.74rem Inter, ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .static-root-fallback h1,
+      .no-js-fallback h1 {
+        margin: 0;
+        color: var(--ivory);
+        font-size: clamp(3.5rem, 18vw, 8rem);
+        font-weight: 500;
+        line-height: 1.06;
+      }
+
+      .static-root-fallback h2,
+      .static-castle h2 {
+        margin: 0;
+        color: var(--ivory);
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: clamp(2.1rem, 10vw, 4.4rem);
+        font-weight: 500;
+        line-height: 1.08;
+      }
+
+      .static-root-fallback p,
+      .no-js-fallback p,
+      .static-castle p {
+        color: var(--muted);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(1.02rem, 4vw, 1.25rem);
+        line-height: 1.65;
+      }
+
+      .static-actions,
+      .static-answer-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        justify-content: center;
+        margin-top: 1.1rem;
+      }
+
+      .static-root-fallback button,
+      .no-js-fallback button,
+      .static-castle button {
+        min-height: 3.15rem;
+        padding: 0.86rem 1.25rem;
+        border: 1px solid rgba(240, 216, 145, 0.72);
+        border-radius: 999px;
+        color: #19090b;
+        background: linear-gradient(135deg, #f0d891, #c6a15a 50%, #8e662b);
+        font: 850 1rem Inter, ui-sans-serif, system-ui, sans-serif;
+        cursor: pointer;
+      }
+
+      .static-root-fallback .static-music-button,
+      .static-castle .static-ghost-button {
+        color: var(--ivory);
+        background: rgba(66, 16, 27, 0.5);
+      }
+
+      .static-music {
+        margin-top: 1.25rem;
+        padding: 1rem;
+        border: 1px solid rgba(198, 161, 90, 0.22);
+        border-radius: 1.25rem;
+        background: rgba(4, 3, 5, 0.4);
+      }
+
+      .static-message {
+        margin: 0.75rem 0 0;
+        color: var(--gold-bright) !important;
+      }
+
+      .static-castle {
+        padding: clamp(3rem, 9vw, 6rem) 1rem;
+        background:
+          radial-gradient(circle at 50% -10%, rgba(111, 23, 39, 0.3), transparent 32rem),
+          linear-gradient(180deg, #050406, #120d13 48%, #050406);
+      }
+
+      .static-room {
+        width: min(100%, 58rem);
+        margin: 0 auto clamp(3rem, 8vw, 5rem);
+        text-align: center;
+      }
+
+      .static-media,
+      .static-gallery-card {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        border: 1px solid rgba(198, 161, 90, 0.35);
+        border-radius: 1.25rem;
+        background: rgba(11, 8, 13, 0.75);
+      }
+
+      .static-media video {
+        width: 100%;
+        border-radius: 0.85rem;
+        background: #070508;
+      }
+
+      .static-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .static-gallery-card img,
+      .static-gallery-placeholder {
+        width: 100%;
+        height: 14rem;
+        object-fit: cover;
+        border-radius: 0.85rem;
+      }
+
+      .static-gallery-placeholder {
+        display: grid;
+        place-items: center;
+        color: var(--gold-bright);
+        border: 1px dashed rgba(198, 161, 90, 0.4);
+        background: radial-gradient(circle, rgba(111, 23, 39, 0.4), #080608 70%);
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+
+      .static-adoration {
+        display: grid;
+        gap: 0.85rem;
+        margin-top: 1rem;
+        text-align: left;
+      }
+
+      .static-adoration p {
+        margin: 0;
+        padding: 0.85rem 1rem;
+        border: 1px solid rgba(198, 161, 90, 0.22);
+        border-radius: 1rem;
+        background: rgba(66, 16, 27, 0.32);
+      }
+
+      .static-letter {
+        margin-top: 1rem;
+        padding: clamp(1.25rem, 5vw, 2.4rem);
+        color: #2f1c13;
+        background: #ead2a1;
+        border-radius: 1.25rem;
+        font-family: Georgia, 'Times New Roman', serif;
+        text-align: left;
+        white-space: pre-wrap;
+      }
+
+      .static-letter p {
+        color: #2f1c13;
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+
+      .static-footer {
+        color: rgba(248, 236, 210, 0.62);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <main class="no-js-fallback" aria-label="Amber Gift Experience no JavaScript fallback">
+        <div class="static-hero-card">
+          <p class="static-eyebrow">Amber's Little Castle</p>
+          <h1>For Amber…</h1>
+          <p>A little world made with time, patience, and love.</p>
+          <button type="button">Enter the Castle</button>
+        </div>
+      </main>
+    </noscript>
+
+    <div id="root">
+      <main class="static-root-fallback" aria-label="Amber Gift Experience static fallback">
+        <div class="static-hero-card">
+          <p class="static-eyebrow">Amber's Little Castle</p>
+          <h1>For Amber…</h1>
+          <p>A little world made with time, patience, and love.</p>
+          <p>Before you open the gift, step inside the story behind it.</p>
+          <div class="static-actions">
+            <button id="static-enter" type="button">Enter the Castle</button>
+          </div>
+          <section class="static-music" aria-label="Music chamber">
+            <p class="static-eyebrow">Music chamber</p>
+            <p>A quiet soundtrack for this little world.</p>
+            <audio id="static-audio" preload="none" src="assets/audio/background-music.mp3"></audio>
+            <button id="static-music-button" class="static-music-button" type="button">Play Music</button>
+            <p id="static-music-message" class="static-message" hidden>Music will be added soon.</p>
+          </section>
+        </div>
+      </main>
+
+      <main id="static-castle" class="static-castle" aria-label="Amber's digital castle rooms" hidden>
+        <section class="static-room" id="static-first-room">
+          <div class="static-room-card">
+            <p class="static-eyebrow">First room</p>
+            <h2>This little world was made for you</h2>
+            <p>Amber, this is not just a page. It is a small piece of the story behind your gift — the time, the details, the mistakes, and the intention that went into making something only for you.</p>
+          </div>
+        </section>
+
+        <section class="static-room">
+          <div class="static-room-card">
+            <p class="static-eyebrow">Creation room</p>
+            <h2>Made for you, not just bought for you</h2>
+            <p>This gift was made with time, intention, and a little piece of who I am. I wanted it to feel like your world: dark, romantic, mysterious, and beautiful.</p>
+            <div class="static-media">
+              <video controls playsinline preload="metadata" src="assets/videos/gift-process.mp4"></video>
+              <p id="static-video-message" class="static-message">The process video will be added soon if the file is not uploaded yet.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="static-room">
+          <p class="static-eyebrow">Memory room</p>
+          <h2>A room of memories</h2>
+          <p>Little pieces of beauty, time, and feeling.</p>
+          <div class="static-gallery">
+            <figure class="static-gallery-card"><img src="assets/images/amber-01.jpg" alt="Amber memory 1" /><figcaption>Memory 01</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-02.jpg" alt="Amber memory 2" /><figcaption>Memory 02</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/gift-01.jpg" alt="Gift memory 1" /><figcaption>Memory 03</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/gift-02.jpg" alt="Gift memory 2" /><figcaption>Memory 04</figcaption></figure>
+          </div>
+        </section>
+
+        <section class="static-room">
+          <div class="static-room-card">
+            <p class="static-eyebrow">Adoration room</p>
+            <h2>Things I adore about you</h2>
+            <div class="static-adoration">
+              <p>✦ Your energy.</p>
+              <p>☾ Your smile.</p>
+              <p>❦ Your dark little soul.</p>
+              <p>✧ Your sweet and mysterious side.</p>
+              <p>◆ The way you make simple moments feel special.</p>
+              <p>✥ The way being with you feels different.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="static-room">
+          <p class="static-eyebrow">Ancient letter room</p>
+          <h2>A letter for you</h2>
+          <button id="static-letter-button" class="static-ghost-button" type="button">Open the Letter</button>
+          <article id="static-letter" class="static-letter" hidden><p>My dear Amber,
+
+I wanted to give you something that was more than just a present.
+Something that could hold a memory, a feeling, and a part of me.
+
+While I was making this, I thought about you.
+About your smile, your energy, your darkness, your beauty, and the way you make ordinary moments feel different.
+
+This gift was made with time, patience, mistakes, care, and love.
+Every piece, every detail, every idea behind it was created because I wanted you to feel special.
+
+You have a way of making the world feel a little more magical.
+And I hope this little world I created for you reminds you that you are deeply appreciated, admired, and cared for.
+
+This is yours.
+A memory you can keep forever.
+
+With love,
+Jonathan</p></article>
+        </section>
+
+        <section class="static-room">
+          <div class="static-room-card">
+            <p class="static-eyebrow">Final question room</p>
+            <h2>The question</h2>
+            <p>I know you like to take things slow, and I respect that. I don’t want to pressure you. I just want to be honest with you. I really like what we are building, I care about you, and I would love to keep choosing you in a more intentional way.</p>
+            <button id="static-question-button" type="button">Continue</button>
+            <div id="static-question" hidden>
+              <h2>Would you like to be my girlfriend?</h2>
+              <div class="static-answer-buttons">
+                <button class="static-answer" type="button">Yes 🖤</button>
+                <button class="static-answer" type="button">Also yes 🦇</button>
+              </div>
+            </div>
+            <div id="static-answer-response" hidden>
+              <p>You just made this night unforgettable.</p>
+              <p>This little castle will always be here for you.</p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="static-footer">
+          <p>Made with intention by Jonathan.</p>
+          <p>JAKS</p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      (() => {
+        const enter = document.getElementById('static-enter');
+        const castle = document.getElementById('static-castle');
+        const firstRoom = document.getElementById('static-first-room');
+        const musicButton = document.getElementById('static-music-button');
+        const audio = document.getElementById('static-audio');
+        const musicMessage = document.getElementById('static-music-message');
+        const letterButton = document.getElementById('static-letter-button');
+        const letter = document.getElementById('static-letter');
+        const questionButton = document.getElementById('static-question-button');
+        const question = document.getElementById('static-question');
+        const response = document.getElementById('static-answer-response');
+
+        enter?.addEventListener('click', () => {
+          castle.hidden = false;
+          firstRoom?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        musicButton?.addEventListener('click', async () => {
+          if (!audio) return;
+          if (!audio.paused) {
+            audio.pause();
+            musicButton.textContent = 'Play Music';
+            return;
+          }
+          try {
+            await audio.play();
+            musicButton.textContent = 'Pause Music';
+          } catch {
+            musicButton.hidden = true;
+            musicMessage.hidden = false;
+          }
+        });
+
+        audio?.addEventListener('error', () => {
+          if (musicButton) musicButton.hidden = true;
+          if (musicMessage) musicMessage.hidden = false;
+        });
+
+        document.querySelectorAll('.static-gallery-card img').forEach((image) => {
+          image.addEventListener('error', () => {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'static-gallery-placeholder';
+            placeholder.textContent = 'Photo will be added soon';
+            image.replaceWith(placeholder);
+          });
+        });
+
+        letterButton?.addEventListener('click', () => {
+          letter.hidden = false;
+        });
+
+        questionButton?.addEventListener('click', () => {
+          question.hidden = false;
+          questionButton.hidden = true;
+        });
+
+        document.querySelectorAll('.static-answer').forEach((button) => {
+          button.addEventListener('click', () => {
+            response.hidden = false;
+          });
+        });
+      })();
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
