@@ -9,6 +9,9 @@
     />
     <meta name="theme-color" content="#09070a" />
     <title>Amber Gift Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
       :root {
         --black: #040305;
@@ -34,11 +37,12 @@
         padding: 1.25rem;
         color: var(--ivory);
         background:
-          radial-gradient(circle at 50% 14%, rgba(240, 216, 145, 0.2), transparent 17rem),
-          radial-gradient(ellipse at 50% 58%, rgba(255, 181, 95, 0.15), transparent 20rem),
-          radial-gradient(circle at 50% 84%, rgba(111, 23, 39, 0.52), transparent 28rem),
+          radial-gradient(circle at 50% 10%, rgba(245, 235, 203, 0.16), transparent 14rem),
+          radial-gradient(circle at 50% 14%, rgba(240, 216, 145, 0.22), transparent 18rem),
+          radial-gradient(ellipse at 50% 58%, rgba(255, 181, 95, 0.18), transparent 22rem),
+          radial-gradient(circle at 50% 84%, rgba(111, 23, 39, 0.58), transparent 30rem),
           linear-gradient(180deg, #040305, #120d13 58%, #040305);
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
         text-align: center;
         overflow: hidden;
       }
@@ -49,9 +53,9 @@
         inset: 7% 3% 0;
         width: min(88vw, 58rem);
         margin: auto auto 0;
-        border: 1px solid rgba(198, 161, 90, 0.18);
+        border: 1px solid rgba(212, 180, 124, 0.22);
         border-bottom: 0;
-        border-radius: 28rem 28rem 0 0;
+        border-radius: 30rem 30rem 0 0;
         content: "";
         pointer-events: none;
         background:
@@ -59,7 +63,7 @@
           linear-gradient(90deg, rgba(0, 0, 0, 0.7), transparent 24%, rgba(198, 161, 90, 0.08) 50%, transparent 76%, rgba(0, 0, 0, 0.7)),
           repeating-linear-gradient(0deg, rgba(248, 236, 210, 0.025) 0 1px, transparent 1px 3.2rem),
           linear-gradient(180deg, rgba(39, 31, 39, 0.5), rgba(5, 4, 6, 0.92));
-        box-shadow: inset 0 0 6rem rgba(0, 0, 0, 0.82), 0 0 4rem rgba(111, 23, 39, 0.22);
+        box-shadow: inset 0 0 7rem rgba(0, 0, 0, 0.86), 0 0 4rem rgba(111, 23, 39, 0.28), 0 0 7rem rgba(198, 161, 90, 0.08);
         opacity: 0.78;
       }
 
@@ -85,7 +89,7 @@
         background:
           radial-gradient(circle at 50% 100%, rgba(255, 181, 95, 0.12), transparent 16rem),
           linear-gradient(145deg, rgba(11, 8, 13, 0.9), rgba(21, 16, 24, 0.72));
-        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58), 0 0 5.5rem rgba(198, 161, 90, 0.22), inset 0 1px 0 rgba(248, 236, 210, 0.08);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58), 0 0 5.5rem rgba(198, 161, 90, 0.24), 0 0 8rem rgba(111, 23, 39, 0.18), inset 0 1px 0 rgba(248, 236, 210, 0.08);
         z-index: 1;
       }
 
@@ -99,10 +103,22 @@
         pointer-events: none;
       }
 
+      .static-hero-card::after,
+      .static-room-card::after {
+        position: absolute;
+        right: 1.25rem;
+        bottom: 1rem;
+        color: rgba(198, 161, 90, 0.42);
+        content: "❦";
+        font-family: 'Cinzel', Georgia, serif;
+        font-size: 1.2rem;
+        pointer-events: none;
+      }
+
       .static-eyebrow {
         margin: 0 0 0.75rem;
         color: var(--gold-bright);
-        font: 800 0.74rem Inter, ui-sans-serif, system-ui, sans-serif;
+        font: 800 0.74rem 'Inter', ui-sans-serif, system-ui, sans-serif;
         letter-spacing: 0.22em;
         text-transform: uppercase;
       }
@@ -113,14 +129,16 @@
         color: var(--ivory);
         font-size: clamp(3.5rem, 18vw, 8rem);
         font-weight: 500;
+        letter-spacing: 0.015em;
         line-height: 1.06;
+        text-shadow: 0 0 34px rgba(198, 161, 90, 0.18), 0 0 5rem rgba(111, 23, 39, 0.18);
       }
 
       .static-root-fallback h2,
       .static-castle h2 {
         margin: 0;
         color: var(--ivory);
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
         font-size: clamp(2.1rem, 10vw, 4.4rem);
         font-weight: 500;
         line-height: 1.08;
@@ -130,7 +148,7 @@
       .no-js-fallback p,
       .static-castle p {
         color: var(--muted);
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
         font-size: clamp(1.02rem, 4vw, 1.25rem);
         line-height: 1.65;
       }
@@ -153,7 +171,7 @@
         border-radius: 999px;
         color: #19090b;
         background: linear-gradient(135deg, #f0d891, #c6a15a 50%, #8e662b);
-        font: 850 1rem Inter, ui-sans-serif, system-ui, sans-serif;
+        font: 850 1rem 'Inter', ui-sans-serif, system-ui, sans-serif;
         cursor: pointer;
       }
 
@@ -225,7 +243,7 @@
         color: var(--gold-bright);
         border: 1px dashed rgba(198, 161, 90, 0.4);
         background: radial-gradient(circle, rgba(111, 23, 39, 0.4), #080608 70%);
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       }
 
       .static-adoration {
@@ -249,14 +267,14 @@
         color: #2f1c13;
         background: #ead2a1;
         border-radius: 1.25rem;
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
         text-align: left;
         white-space: pre-wrap;
       }
 
       .static-letter p {
         color: #2f1c13;
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       }
 
       .static-footer {
@@ -271,7 +289,7 @@
         <div class="static-hero-card">
           <p class="static-eyebrow">Amber's Little Castle</p>
           <h1>For Amber…</h1>
-          <p>A little world made with time, patience, and love.</p>
+          <p>A little world I made just for you.</p>
           <button type="button">Enter the Castle</button>
         </div>
       </main>
@@ -282,8 +300,8 @@
         <div class="static-hero-card">
           <p class="static-eyebrow">Amber's Little Castle</p>
           <h1>For Amber…</h1>
-          <p>A little world made with time, patience, and love.</p>
-          <p>Before you open the gift, step inside the story behind it.</p>
+          <p>A little world I made just for you.</p>
+          <p>Before you open the gift, come inside the story behind it.</p>
           <div class="static-actions">
             <button id="static-enter" type="button">Enter the Castle</button>
           </div>
@@ -309,8 +327,8 @@
         <section class="static-room">
           <div class="static-room-card">
             <p class="static-eyebrow">Creation room</p>
-            <h2>Made for you, not just bought for you</h2>
-            <p>This gift was made with time, intention, and a little piece of who I am. I wanted it to feel like your world: dark, romantic, mysterious, and beautiful.</p>
+            <h2>Something I made only for you</h2>
+            <p>This gift was made with time, intention, and a little piece of who I am. Every detail was meant to feel personal, dark, romantic, mysterious, and beautiful.</p>
             <div class="static-media">
               <video controls playsinline preload="metadata" src="assets/videos/gift-process.mp4"></video>
               <p id="static-video-message" class="static-message">The process video will be added soon if the file is not uploaded yet.</p>

@@ -6,8 +6,8 @@ export const giftContent = {
   intro: {
     eyebrow: "Amber's Little Castle",
     title: "For Amber…",
-    subtitle: "A little world made with time, patience, and love.",
-    smallText: "Before you open the gift, step inside the story behind it.",
+    subtitle: "A little world I made just for you.",
+    smallText: "Before you open the gift, come inside the story behind it.",
     button: "Enter the Castle"
   },
   music: {
@@ -25,9 +25,9 @@ export const giftContent = {
   },
   process: {
     roomLabel: "Creation room",
-    title: "Made for you, not just bought for you",
-    text: "This gift was made with time, intention, and a little piece of who I am. I wanted it to feel like your world: dark, romantic, mysterious, and beautiful.",
-    details: ["3D model", "Printing process", "The box", "Small details", "Final preparation"],
+    title: "Something I made only for you",
+    text: "This gift was made with time, intention, and a little piece of who I am. Every detail was meant to feel personal, dark, romantic, mysterious, and beautiful.",
+    details: ["A little glimpse behind it", "3D model", "Printing process", "The box", "Final preparation"],
     videoSrc: asset("assets/videos/gift-process.mp4"),
     missingText: "The process video will be added soon."
   },
