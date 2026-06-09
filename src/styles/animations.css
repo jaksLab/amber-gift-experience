@@ -38,7 +38,7 @@
 .floating-particles {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
@@ -79,9 +79,9 @@
 
 @keyframes cinematicReveal {
   from {
-    opacity: 0;
-    transform: translateY(1.5rem) scale(0.98);
-    filter: blur(8px);
+    opacity: 1;
+    transform: translateY(0.35rem) scale(0.995);
+    filter: blur(1px);
   }
   to {
     opacity: 1;

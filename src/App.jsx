@@ -15,6 +15,12 @@ export default function App() {
 
   useEffect(() => {
     const sections = document.querySelectorAll('.reveal-section');
+
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.classList.add('is-visible'));
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,22 +45,28 @@ export default function App() {
   };
 
   return (
-    <div className="app-shell">
-      <FloatingParticles />
-      <Intro content={giftContent.intro} isOpen={isOpen} onOpen={openGift} />
-      <main id="castle-rooms" className={`castle-rooms ${isOpen ? 'rooms-unlocked' : ''}`}>
-        <Welcome content={giftContent.welcome} />
-        <CastleRoomDivider label="Through candlelit stone" />
-        <ProcessVideo content={giftContent.process} />
-        <CastleRoomDivider label="Into the room of memories" />
-        <Gallery content={giftContent.gallery} />
-        <CastleRoomDivider label="Past the sealed archive" />
-        <AncientLetter content={giftContent.letter} />
-        <CastleRoomDivider label="Toward the quiet music chamber" />
-        <MusicPlayer content={giftContent.music} />
-        <CastleRoomDivider label="The last door" />
-        <FinalQuestion content={giftContent.finalQuestion} />
-      </main>
-    </div>
+    <>
+      <div className="emergency-fallback" aria-hidden="true">
+        <p>Amber Gift Experience is loading…</p>
+        <strong>For Amber…</strong>
+      </div>
+      <div className="app-shell">
+        <FloatingParticles />
+        <Intro content={giftContent.intro} isOpen={isOpen} onOpen={openGift} />
+        <main id="castle-rooms" className={`castle-rooms ${isOpen ? 'rooms-unlocked' : ''}`}>
+          <Welcome content={giftContent.welcome} />
+          <CastleRoomDivider label="Through candlelit stone" />
+          <ProcessVideo content={giftContent.process} />
+          <CastleRoomDivider label="Into the room of memories" />
+          <Gallery content={giftContent.gallery} />
+          <CastleRoomDivider label="Past the sealed archive" />
+          <AncientLetter content={giftContent.letter} />
+          <CastleRoomDivider label="Toward the quiet music chamber" />
+          <MusicPlayer content={giftContent.music} />
+          <CastleRoomDivider label="The last door" />
+          <FinalQuestion content={giftContent.finalQuestion} />
+        </main>
+      </div>
+    </>
   );
 }

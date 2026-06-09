@@ -537,3 +537,97 @@ p {
     justify-content: center;
   }
 }
+
+.no-js-fallback,
+.emergency-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 1.5rem;
+  color: var(--color-ivory, #f8ecd2);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(125, 27, 42, 0.34), transparent 22rem),
+    linear-gradient(180deg, #050406, #111016 52%, #050406);
+  font-family: Georgia, 'Times New Roman', serif;
+  text-align: center;
+}
+
+.no-js-fallback h1,
+.emergency-fallback strong {
+  margin: 0.35rem 0;
+  color: var(--color-ivory, #f8ecd2);
+  font-size: clamp(3rem, 17vw, 7rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.no-js-fallback button {
+  min-height: 3rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid rgba(240, 216, 145, 0.7);
+  border-radius: 999px;
+  color: #1b0909;
+  background: linear-gradient(135deg, #f0d891, #c7a45a 48%, #8e662a);
+  font: 700 1rem system-ui, sans-serif;
+}
+
+.app-shell {
+  z-index: 1;
+}
+
+.intro {
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+}
+
+.intro-content {
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+}
+
+.floating-particles {
+  z-index: 0;
+}
+
+.runtime-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 1.5rem;
+  color: var(--color-ivory, #f8ecd2);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(125, 27, 42, 0.34), transparent 22rem),
+    linear-gradient(180deg, #050406, #111016 52%, #050406);
+  font-family: Georgia, 'Times New Roman', serif;
+  text-align: center;
+}
+
+.runtime-fallback h1 {
+  margin: 0.35rem 0;
+  color: var(--color-ivory, #f8ecd2);
+  font-size: clamp(3rem, 17vw, 7rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.runtime-fallback button {
+  min-height: 3rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid rgba(240, 216, 145, 0.7);
+  border-radius: 999px;
+  color: #1b0909;
+  background: linear-gradient(135deg, #f0d891, #c7a45a 48%, #8e662a);
+  font: 700 1rem system-ui, sans-serif;
+}
