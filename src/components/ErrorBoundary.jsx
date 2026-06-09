@@ -18,7 +18,7 @@ export default class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <main className="runtime-fallback" role="alert" aria-label="Amber Gift Experience fallback">
-          <p>Amber Gift Experience is loading…</p>
+          <p>Amber Gift Experience</p>
           <h1>For Amber…</h1>
           <p>A little piece of my heart, made with time, patience, and love.</p>
           <button type="button">Open Your Gift</button>

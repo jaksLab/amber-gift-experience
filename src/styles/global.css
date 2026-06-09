@@ -538,11 +538,9 @@ p {
   }
 }
 
-.no-js-fallback,
-.emergency-fallback {
+.no-js-fallback {
   position: fixed;
   inset: 0;
-  z-index: 0;
   display: grid;
   align-content: center;
   justify-items: center;
@@ -556,8 +554,7 @@ p {
   text-align: center;
 }
 
-.no-js-fallback h1,
-.emergency-fallback strong {
+.no-js-fallback h1 {
   margin: 0.35rem 0;
   color: var(--color-ivory, #f8ecd2);
   font-size: clamp(3rem, 17vw, 7rem);
