@@ -1,35 +1,37 @@
 import { useState } from 'react';
+import AdorationList from './components/AdorationList.jsx';
 import AncientLetter from './components/AncientLetter.jsx';
+import CastleRoom from './components/CastleRoom.jsx';
 import FinalQuestion from './components/FinalQuestion.jsx';
+import Footer from './components/Footer.jsx';
 import Gallery from './components/Gallery.jsx';
-import Intro from './components/Intro.jsx';
-import MusicPlayer from './components/MusicPlayer.jsx';
+import Hero from './components/Hero.jsx';
 import ProcessVideo from './components/ProcessVideo.jsx';
-import Welcome from './components/Welcome.jsx';
 import { giftContent } from './data/content.js';
 
 export default function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [entered, setEntered] = useState(false);
 
-  const openGift = () => {
-    setIsOpen(true);
+  const enterCastle = () => {
+    setEntered(true);
     requestAnimationFrame(() => {
-      document.getElementById('welcome')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('first-room')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   };
 
   return (
     <div className="app-shell">
-      <Intro content={giftContent.intro} onOpen={openGift} />
+      <Hero content={giftContent.intro} music={giftContent.music} onEnter={enterCastle} />
 
-      {isOpen && (
-        <main className="castle-rooms" aria-label="Amber Gift Experience rooms">
-          <Welcome content={giftContent.welcome} />
+      {entered && (
+        <main className="castle-journey" aria-label="Amber's digital castle rooms">
+          <CastleRoom content={giftContent.welcome} id="first-room" />
           <ProcessVideo content={giftContent.process} />
           <Gallery content={giftContent.gallery} />
+          <AdorationList content={giftContent.adoration} />
           <AncientLetter content={giftContent.letter} />
-          <MusicPlayer content={giftContent.music} />
           <FinalQuestion content={giftContent.finalQuestion} />
+          <Footer content={giftContent.footer} />
         </main>
       )}
     </div>

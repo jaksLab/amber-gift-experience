@@ -4,13 +4,13 @@ export default function AncientLetter({ content }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="room" aria-labelledby="letter-title">
+    <section className="room reveal-room" aria-labelledby="letter-title">
       <div className="section-heading">
-        <p className="eyebrow">Ancient letter room</p>
+        <p className="eyebrow">{content.roomLabel}</p>
         <h2 id="letter-title">{content.title}</h2>
       </div>
 
-      <button className="outline-button" type="button" onClick={() => setIsOpen(true)} aria-expanded={isOpen}>
+      <button className="button button-ghost" type="button" onClick={() => setIsOpen(true)} aria-expanded={isOpen}>
         {content.button}
       </button>
 

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-export default function MusicPlayer({ content }) {
+export default function MusicPlayer({ content, variant = 'room' }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -25,28 +25,29 @@ export default function MusicPlayer({ content }) {
   };
 
   return (
-    <section className="room" aria-labelledby="music-title">
-      <div className="room-card music-card">
-        <p className="eyebrow">Music chamber</p>
+    <section className={`music-player music-player-${variant}`} aria-labelledby="music-title">
+      <div className="music-copy">
+        <p className="music-kicker">Music chamber</p>
         <h2 id="music-title">{content.title}</h2>
-
-        {hasError ? (
-          <div className="asset-placeholder compact-placeholder" role="status">Music will be added soon.</div>
-        ) : (
-          <>
-            <audio
-              ref={audioRef}
-              src={content.src}
-              preload="none"
-              onError={() => setHasError(true)}
-              onEnded={() => setIsPlaying(false)}
-            />
-            <button className="gold-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
-              {isPlaying ? content.pauseLabel : content.playLabel}
-            </button>
-          </>
-        )}
+        <p>{content.text}</p>
       </div>
+
+      {hasError ? (
+        <p className="asset-message" role="status">{content.missingText}</p>
+      ) : (
+        <>
+          <audio
+            ref={audioRef}
+            src={content.src}
+            preload="none"
+            onError={() => setHasError(true)}
+            onEnded={() => setIsPlaying(false)}
+          />
+          <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
+            {isPlaying ? content.pauseLabel : content.playLabel}
+          </button>
+        </>
+      )}
     </section>
   );
 }

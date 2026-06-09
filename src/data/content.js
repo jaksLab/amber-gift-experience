@@ -4,32 +4,60 @@ export const giftContent = {
   recipientName: "Amber",
   senderName: "Jonathan",
   intro: {
+    eyebrow: "Amber's Little Castle",
     title: "For Amber…",
-    subtitle: "A little piece of my heart, made with time, patience, and love.",
-    button: "Open Your Gift"
+    subtitle: "A little world made with time, patience, and love.",
+    smallText: "Before you open the gift, step inside the story behind it.",
+    button: "Enter the Castle"
+  },
+  music: {
+    title: "Music at the entrance",
+    text: "A quiet soundtrack for this little world.",
+    playLabel: "Play Music",
+    pauseLabel: "Pause Music",
+    missingText: "Music will be added soon.",
+    src: asset("assets/audio/background-music.mp3")
   },
   welcome: {
-    title: "Welcome to your little world",
-    text: "Amber, this is not just a gift. It is a memory, a story, and a little world I created for you.",
-    subtext: "Every detail was made with you in my mind."
+    roomLabel: "First room",
+    title: "This little world was made for you",
+    text: "Amber, this is not just a page. It is a small piece of the story behind your gift — the time, the details, the mistakes, and the intention that went into making something only for you."
   },
   process: {
-    title: "The story behind your gift",
-    text: "I wanted you to see everything behind this gift…",
-    subtext: "Every mistake, every detail, and every moment became part of this memory.",
-    videoSrc: asset("assets/videos/gift-process.mp4")
+    roomLabel: "Creation room",
+    title: "Made for you, not just bought for you",
+    text: "This gift was made with time, intention, and a little piece of who I am. I wanted it to feel like your world: dark, romantic, mysterious, and beautiful.",
+    details: ["3D model", "Printing process", "The box", "Small details", "Final preparation"],
+    videoSrc: asset("assets/videos/gift-process.mp4"),
+    missingText: "The process video will be added soon."
   },
   gallery: {
+    roomLabel: "Memory room",
     title: "A room of memories",
     subtitle: "Little pieces of beauty, time, and feeling.",
     images: [
       asset("assets/images/amber-01.jpg"),
       asset("assets/images/amber-02.jpg"),
       asset("assets/images/gift-01.jpg"),
-      asset("assets/images/gift-02.jpg")
+      asset("assets/images/gift-02.jpg"),
+      asset("assets/images/process-01.jpg"),
+      asset("assets/images/process-02.jpg")
+    ]
+  },
+  adoration: {
+    roomLabel: "Adoration room",
+    title: "Things I adore about you",
+    items: [
+      "Your energy.",
+      "Your smile.",
+      "Your dark little soul.",
+      "Your sweet and mysterious side.",
+      "The way you make simple moments feel special.",
+      "The way being with you feels different."
     ]
   },
   letter: {
+    roomLabel: "Ancient letter room",
     title: "A letter for you",
     button: "Open the Letter",
     body: `My dear Amber,
@@ -44,7 +72,7 @@ This gift was made with time, patience, mistakes, care, and love.
 Every piece, every detail, every idea behind it was created because I wanted you to feel special.
 
 You have a way of making the world feel a little more magical.
-And I hope this little world I created for you reminds you that you are deeply appreciated, admired, and loved.
+And I hope this little world I created for you reminds you that you are deeply appreciated, admired, and cared for.
 
 This is yours.
 A memory you can keep forever.
@@ -52,19 +80,19 @@ A memory you can keep forever.
 With love,
 Jonathan`
   },
-  music: {
-    title: "Music for this little world",
-    playLabel: "Play Music",
-    pauseLabel: "Pause",
-    src: asset("assets/audio/background-music.mp3")
-  },
   finalQuestion: {
-    intro: "And after all of this… there is one more thing I wanted to ask you.",
+    roomLabel: "Final question room",
+    title: "The question",
+    text: "I know you like to take things slow, and I respect that. I don’t want to pressure you. I just want to be honest with you. I really like what we are building, I care about you, and I would love to keep choosing you in a more intentional way.",
     continueButton: "Continue",
-    question: "Amber, will you be my girlfriend?",
-    yesButton: "Yes",
-    ofCourseButton: "Of course yes",
-    response: "You just made this memory even more beautiful.",
-    forever: "This page will always be here for you."
+    question: "Would you like to be my girlfriend?",
+    yesButton: "Yes 🖤",
+    ofCourseButton: "Also yes 🦇",
+    response: "You just made this night unforgettable.",
+    forever: "This little castle will always be here for you."
+  },
+  footer: {
+    text: "Made with intention by Jonathan.",
+    signature: "JAKS"
   }
 };
