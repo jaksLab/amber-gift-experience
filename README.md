@@ -1,18 +1,34 @@
 # Amber Gift Experience
 
-A production-ready React + Vite digital gift website for Amber. The experience is designed as a sentimental, premium, dark romantic gothic fantasy castle that can be opened from a QR code or NFC tag inside a physical gift.
+A mobile-first React + Vite digital gift website for Amber. The experience is a simple, stable, dark-romantic gothic gift page designed to work on GitHub Pages at:
 
-The website includes:
+https://jakslab.github.io/amber-gift-experience/
 
-- A cinematic castle entrance
-- A welcome room
-- A gift creation process video room
-- A memories gallery room
-- An ancient parchment letter room
-- A manual music chamber
-- A final romantic question room
+The site opens with:
 
-## Install
+- “For Amber…”
+- “A little piece of my heart, made with time, patience, and love.”
+- “Open Your Gift”
+
+After Amber taps the button, the rest of the gift rooms appear: welcome, creation process video, memory gallery, ancient letter, music chamber, and final question.
+
+## Deployment
+
+This project is deployed **only with GitHub Pages using GitHub Actions**.
+
+GitHub Pages should be configured to use:
+
+- **Source:** GitHub Actions
+
+The workflow file is located at:
+
+```bash
+.github/workflows/deploy.yml
+```
+
+On every push to `main`, GitHub Actions installs dependencies, builds the Vite app, uploads `dist`, and deploys it to GitHub Pages.
+
+## Local install
 
 ```bash
 npm install
@@ -30,64 +46,61 @@ npm run dev
 npm run build
 ```
 
-## Preview production build
+## Preview the production build
 
 ```bash
 npm run preview
 ```
 
-## Deploy to Netlify
+## GitHub Pages base path
 
-1. Push this repository to GitHub.
-2. Connect the GitHub repository to Netlify.
-3. Use this build command:
+The Vite base path is configured in `vite.config.js` as:
 
-```bash
-npm run build
+```js
+base: '/amber-gift-experience/'
 ```
 
-4. Use this publish directory:
+This ensures built assets load correctly under the GitHub Pages URL.
+
+## Where to replace assets
+
+Upload images here:
 
 ```bash
-dist
+public/assets/images
 ```
 
-The included `netlify.toml` already configures the same build command and publish directory.
-
-## Where to replace files
-
-Upload your real assets into the public asset folders:
-
-- Images: `/public/assets/images`
-- Video: `/public/assets/videos/gift-process.mp4`
-- Music: `/public/assets/audio/background-music.mp3`
-
-The site gracefully displays premium gothic fallback frames/messages if images, video, or music are missing.
-
-## Where to edit text
-
-Edit all main website copy, names, the letter, and asset paths in:
-
-```bash
-/src/data/content.js
-```
-
-## Recommended asset names
-
-Use these file names to match the default configuration:
+Recommended image names:
 
 - `amber-01.jpg`
 - `amber-02.jpg`
 - `gift-01.jpg`
 - `gift-02.jpg`
-- `process-01.jpg`
-- `process-02.jpg`
-- `gift-process.mp4`
-- `background-music.mp3`
+
+Upload the process video here:
+
+```bash
+public/assets/videos/gift-process.mp4
+```
+
+Upload the music here:
+
+```bash
+public/assets/audio/background-music.mp3
+```
+
+## Where to edit text
+
+Edit all names, section copy, asset paths, and the letter in:
+
+```bash
+src/data/content.js
+```
 
 ## Notes
 
-- Video does not autoplay and includes controls.
-- Music does not autoplay and only starts after tapping the Play Music button.
-- The layout is mobile-first and optimized for iPhone-sized screens.
-- Animations respect `prefers-reduced-motion`.
+- Video does not autoplay and uses native controls.
+- Music does not autoplay and only plays after tapping the Play Music button.
+- Missing images show elegant placeholder frames.
+- Missing video shows “The video will be added soon.”
+- Missing audio shows “Music will be added soon.”

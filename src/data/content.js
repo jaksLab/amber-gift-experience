@@ -1,3 +1,5 @@
+const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 export const giftContent = {
   recipientName: "Amber",
   senderName: "Jonathan",
@@ -15,18 +17,16 @@ export const giftContent = {
     title: "The story behind your gift",
     text: "I wanted you to see everything behind this gift…",
     subtext: "Every mistake, every detail, and every moment became part of this memory.",
-    videoSrc: "/assets/videos/gift-process.mp4"
+    videoSrc: asset("assets/videos/gift-process.mp4")
   },
   gallery: {
     title: "A room of memories",
     subtitle: "Little pieces of beauty, time, and feeling.",
     images: [
-      "/assets/images/amber-01.jpg",
-      "/assets/images/amber-02.jpg",
-      "/assets/images/gift-01.jpg",
-      "/assets/images/gift-02.jpg",
-      "/assets/images/process-01.jpg",
-      "/assets/images/process-02.jpg"
+      asset("assets/images/amber-01.jpg"),
+      asset("assets/images/amber-02.jpg"),
+      asset("assets/images/gift-01.jpg"),
+      asset("assets/images/gift-02.jpg")
     ]
   },
   letter: {
@@ -56,7 +56,7 @@ Jonathan`
     title: "Music for this little world",
     playLabel: "Play Music",
     pauseLabel: "Pause",
-    src: "/assets/audio/background-music.mp3"
+    src: asset("assets/audio/background-music.mp3")
   },
   finalQuestion: {
     intro: "And after all of this… there is one more thing I wanted to ask you.",
