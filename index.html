@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Amber Gift Experience — a sentimental dark romantic digital castle gift."
+    />
+    <meta name="theme-color" content="#09070a" />
+    <title>Amber Gift Experience</title>
+    <style>
+      .no-js-fallback {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        min-height: 100svh;
+        padding: 1.5rem;
+        color: #f8ecd2;
+        background: radial-gradient(circle at 50% 20%, rgba(125, 27, 42, 0.34), transparent 22rem), linear-gradient(180deg, #050406, #111016 52%, #050406);
+        font-family: Georgia, 'Times New Roman', serif;
+        text-align: center;
+      }
+      .no-js-fallback h1 {
+        margin: 0.35rem 0;
+        color: #f8ecd2;
+        font-size: clamp(3rem, 17vw, 7rem);
+        font-weight: 500;
+        line-height: 1.05;
+      }
+      .no-js-fallback button {
+        min-height: 3rem;
+        margin-top: 1rem;
+        padding: 0.85rem 1.25rem;
+        border: 1px solid rgba(240, 216, 145, 0.7);
+        border-radius: 999px;
+        color: #1b0909;
+        background: linear-gradient(135deg, #f0d891, #c7a45a 48%, #8e662a);
+        font: 700 1rem system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <main class="no-js-fallback" aria-label="Amber Gift Experience no JavaScript fallback">
+        <h1>For Amber…</h1>
+        <p>A little piece of my heart, made with time, patience, and love.</p>
+        <button type="button">Open Your Gift</button>
+      </main>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
