@@ -12,10 +12,14 @@ export const giftContent = {
   },
   music: {
     title: "Music at the entrance",
-    text: "A quiet soundtrack for this little world.",
+    text: "A dark romantic soundtrack for the castle doors.",
     playLabel: "Play Music",
     pauseLabel: "Pause Music",
-    missingText: "Music will be added soon.",
+    youtubeLabel: "Open YouTube player",
+    youtubeText: "If the browser cannot play the local soundtrack, use the mini YouTube player below.",
+    missingText: "The local MP3 is not available, so the YouTube player is ready instead.",
+    youtubeUrl: "https://www.youtube.com/watch?v=iuTkkMuKEec",
+    youtubeEmbedSrc: "https://www.youtube.com/embed/iuTkkMuKEec?rel=0&modestbranding=1",
     src: asset("assets/audio/background-music.mp3")
   },
   welcome: {
