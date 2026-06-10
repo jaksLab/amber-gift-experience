@@ -36,12 +36,18 @@ export const giftContent = {
     title: "A room of memories",
     subtitle: "Little pieces of beauty, time, and feeling.",
     images: [
-      asset("assets/images/amber-01.jpg"),
-      asset("assets/images/amber-02.jpg"),
-      asset("assets/images/gift-01.jpg"),
-      asset("assets/images/gift-02.jpg"),
-      asset("assets/images/process-01.jpg"),
-      asset("assets/images/process-02.jpg")
+      asset("assets/images/amber-01.jpg.JPEG"),
+      asset("assets/images/amber-02.jpg.JPEG"),
+      asset("assets/images/amber-03.jpg.JPEG"),
+      asset("assets/images/amber-04.jpg.JPG"),
+      asset("assets/images/amber-06.jpg.png"),
+      asset("assets/images/amber-07.jpg.png"),
+      asset("assets/images/amber-08.jpg.png"),
+      asset("assets/images/amber-09.jpg.png"),
+      asset("assets/images/amber-11.jpg.JPG"),
+      asset("assets/images/amber-12.jpg.JPG"),
+      asset("assets/images/amber-13.jpg.JPG"),
+      asset("assets/images/amber-14.jpg.JPG")
     ]
   },
   adoration: {

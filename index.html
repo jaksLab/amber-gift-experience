@@ -330,7 +330,7 @@
             <h2>Something I made only for you</h2>
             <p>This gift was made with time, intention, and a little piece of who I am. Every detail was meant to feel personal, dark, romantic, mysterious, and beautiful.</p>
             <div class="static-media">
-              <video controls playsinline preload="metadata" src="assets/videos/gift-process.mp4"></video>
+              <video id="static-video" controls playsinline preload="metadata" src="assets/videos/gift-process.mp4"></video>
               <p id="static-video-message" class="static-message">The process video will be added soon if the file is not uploaded yet.</p>
             </div>
           </div>
@@ -341,10 +341,10 @@
           <h2>A room of memories</h2>
           <p>Little pieces of beauty, time, and feeling.</p>
           <div class="static-gallery">
-            <figure class="static-gallery-card"><img src="assets/images/amber-01.jpg" alt="Amber memory 1" /><figcaption>Memory 01</figcaption></figure>
-            <figure class="static-gallery-card"><img src="assets/images/amber-02.jpg" alt="Amber memory 2" /><figcaption>Memory 02</figcaption></figure>
-            <figure class="static-gallery-card"><img src="assets/images/gift-01.jpg" alt="Gift memory 1" /><figcaption>Memory 03</figcaption></figure>
-            <figure class="static-gallery-card"><img src="assets/images/gift-02.jpg" alt="Gift memory 2" /><figcaption>Memory 04</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-01.jpg.JPEG" alt="Amber memory 1" /><figcaption>Memory 01</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-02.jpg.JPEG" alt="Amber memory 2" /><figcaption>Memory 02</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-03.jpg.JPEG" alt="Amber memory 3" /><figcaption>Memory 03</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-04.jpg.JPG" alt="Amber memory 4" /><figcaption>Memory 04</figcaption></figure>
           </div>
         </section>
 
@@ -423,6 +423,8 @@ Jonathan</p></article>
         const musicButton = document.getElementById('static-music-button');
         const audio = document.getElementById('static-audio');
         const musicMessage = document.getElementById('static-music-message');
+        const video = document.getElementById('static-video');
+        const videoMessage = document.getElementById('static-video-message');
         const letterButton = document.getElementById('static-letter-button');
         const letter = document.getElementById('static-letter');
         const questionButton = document.getElementById('static-question-button');
@@ -450,10 +452,31 @@ Jonathan</p></article>
           }
         });
 
-        audio?.addEventListener('error', () => {
+        const verifyAssetType = async (element, expectedTypePrefix, onMissing) => {
+          if (!element?.currentSrc && !element?.src) return;
+          try {
+            const response = await fetch(element.currentSrc || element.src, { method: 'HEAD' });
+            const contentType = response.headers.get('content-type') || '';
+            if (!response.ok || !contentType.toLowerCase().startsWith(expectedTypePrefix)) onMissing();
+          } catch {
+            onMissing();
+          }
+        };
+
+        const showMissingMusic = () => {
           if (musicButton) musicButton.hidden = true;
           if (musicMessage) musicMessage.hidden = false;
-        });
+        };
+
+        const showMissingVideo = () => {
+          if (video) video.hidden = true;
+          if (videoMessage) videoMessage.hidden = false;
+        };
+
+        audio?.addEventListener('error', showMissingMusic);
+        video?.addEventListener('error', showMissingVideo);
+        verifyAssetType(audio, 'audio/', showMissingMusic);
+        verifyAssetType(video, 'video/', showMissingVideo);
 
         document.querySelectorAll('.static-gallery-card img').forEach((image) => {
           image.addEventListener('error', () => {
