@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useAssetAvailable } from '../utils/assets.js';
 
 export default function ProcessVideo({ content }) {
   const [hasError, setHasError] = useState(false);
+  const isVideoAvailable = useAssetAvailable(content.videoSrc, 'video/');
+  const showMissingVideo = hasError || isVideoAvailable === false;
 
   return (
     <section className="room reveal-room" aria-labelledby="process-title">
@@ -18,7 +21,11 @@ export default function ProcessVideo({ content }) {
       </ul>
 
       <div className="media-frame">
-        {!hasError ? (
+        {showMissingVideo ? (
+          <div className="asset-placeholder" role="status">{content.missingText}</div>
+        ) : isVideoAvailable === null ? (
+          <div className="asset-placeholder" role="status">Preparing the process video…</div>
+        ) : (
           <video
             controls
             playsInline
@@ -27,11 +34,9 @@ export default function ProcessVideo({ content }) {
             onError={() => setHasError(true)}
             aria-label="Gift creation process video"
           >
-            <source src={content.videoSrc} type="video/mp4" />
+            <source src={content.videoSrc} type="video/mp4" onError={() => setHasError(true)} />
             {content.missingText}
           </video>
-        ) : (
-          <div className="asset-placeholder" role="status">{content.missingText}</div>
         )}
       </div>
     </section>
