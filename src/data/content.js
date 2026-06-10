@@ -1,4 +1,4 @@
-const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
+export const asset = (path) => `${import.meta.env?.BASE_URL ?? '/'}${path}`;
 
 export const giftContent = {
   recipientName: "Amber",
@@ -32,22 +32,58 @@ export const giftContent = {
     missingText: "The process video will be added soon."
   },
   gallery: {
-    roomLabel: "Memory room",
-    title: "A room of memories",
-    subtitle: "Little pieces of beauty, time, and feeling.",
-    images: [
-      asset("assets/images/amber-01.jpg.JPEG"),
-      asset("assets/images/amber-02.jpg.JPEG"),
-      asset("assets/images/amber-03.jpg.JPEG"),
-      asset("assets/images/amber-04.jpg.JPG"),
-      asset("assets/images/amber-06.jpg.png"),
-      asset("assets/images/amber-07.jpg.png"),
-      asset("assets/images/amber-08.jpg.png"),
-      asset("assets/images/amber-09.jpg.png"),
-      asset("assets/images/amber-11.jpg.JPG"),
-      asset("assets/images/amber-12.jpg.JPG"),
-      asset("assets/images/amber-13.jpg.JPG"),
-      asset("assets/images/amber-14.jpg.JPG")
+    eyebrow: "Memory Room",
+    title: "Little pieces of this memory",
+    subtitle: "Moments, details, and feelings I wanted to keep for you.",
+    memories: [
+      {
+        title: "Us",
+        caption: "A little moment I would keep again.",
+        images: ["assets/images/amber-me.jpg"]
+      },
+      {
+        title: "Her light",
+        caption: "The kind of beauty that stays in my mind.",
+        images: ["assets/images/amber.jpg"]
+      },
+      {
+        title: "Little moments together",
+        caption: "Simple moments that felt different because they were with you.",
+        images: [
+          "assets/images/amber-01.jpg",
+          "assets/images/amber-02.jpg",
+          "assets/images/amber-03.jpg"
+        ]
+      },
+      {
+        title: "Soft memories",
+        caption: "Small pieces of time that felt sweet and real.",
+        images: [
+          "assets/images/amber-04.jpg",
+          "assets/images/amber-05.jpg"
+        ]
+      },
+      {
+        title: "Waterfall day",
+        caption: "A memory with water, light, and you in it.",
+        images: [
+          "assets/images/amber-06.jpg",
+          "assets/images/amber-07.jpg",
+          "assets/images/amber-08.jpg",
+          "assets/images/amber-09.jpg"
+        ]
+      },
+      {
+        title: "Beautiful pieces of her",
+        caption: "Little pieces of you that I wanted to keep close.",
+        images: [
+          "assets/images/amber-10.jpg",
+          "assets/images/amber-11.jpg",
+          "assets/images/amber-12.jpg",
+          "assets/images/amber-13.jpg",
+          "assets/images/amber-14.jpg"
+        ]
+      }
     ]
   },
   adoration: {
@@ -66,31 +102,42 @@ export const giftContent = {
     roomLabel: "Ancient letter room",
     title: "A letter for you",
     button: "Open the Letter",
+    continueButton: "Continue to the question",
     body: `My dear Amber,
 
-I wanted to give you something that was more than just a present.
+I wanted to make something that felt personal.
 Something that could hold a memory, a feeling, and a part of me.
 
-While I was making this, I thought about you.
-About your smile, your energy, your darkness, your beauty, and the way you make ordinary moments feel different.
+While I was making this, I kept thinking about you.
+Your smile.
+Your energy.
+Your darkness.
+Your beauty.
+The way you make ordinary moments feel different.
 
-This gift was made with time, patience, mistakes, care, and love.
-Every piece, every detail, every idea behind it was created because I wanted you to feel special.
+I wanted you to feel special, not because of how big the gift is, but because of the intention behind it.
+Because every detail was made with care.
+Because every part of this little world was created with you in my heart.
 
-You have a way of making the world feel a little more magical.
-And I hope this little world I created for you reminds you that you are deeply appreciated, admired, and cared for.
+You have a way of making things feel more magical.
+A little darker.
+A little sweeter.
+A little more alive.
+
+I hope that when you see this, you feel admired.
+I hope you feel appreciated.
+I hope you feel cared for.
 
 This is yours.
-A memory you can keep forever.
+A memory you can keep.
 
 With love,
 Jonathan`
   },
   finalQuestion: {
-    roomLabel: "Final question room",
+    roomLabel: "Final hidden room",
     title: "The question",
-    text: "I know you like to take things slow, and I respect that. I don’t want to pressure you. I just want to be honest with you. I really like what we are building, I care about you, and I would love to keep choosing you in a more intentional way.",
-    continueButton: "Continue",
+    text: "I know you like to take things slow, and I respect that. I don’t want to pressure you or rush anything. I just want to be honest with you. I care about you, I like what we are building, and I would love to keep choosing you with more intention.",
     question: "Would you like to be my girlfriend?",
     yesButton: "Yes 🖤",
     ofCourseButton: "Also yes 🦇",
