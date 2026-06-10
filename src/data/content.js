@@ -42,7 +42,9 @@ export const giftContent = {
     memories: [
       {
         title: "Us",
-        caption: "A little moment I would keep again.",
+        caption: "The first time I saw you in person — a moment I knew I would keep.",
+        imageFit: "contain",
+        imagePosition: "center",
         images: ["assets/images/amber-me.jpg"]
       },
       {

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { asset } from '../data/content.js';
+import { useAssetAvailable } from '../utils/assets.js';
 
 function MissingMemory({ title }) {
   return (
@@ -14,10 +15,18 @@ export default function MemoryCarousel({ memory, index, onOpenImage }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [missingImages, setMissingImages] = useState(() => new Set());
   const hasMultipleImages = memory.images.length > 1;
+  const imageFit = memory.imageFit || 'cover';
+  const imagePosition = memory.imagePosition || 'center';
 
   const activeImage = memory.images[activeIndex];
   const activeSrc = useMemo(() => asset(activeImage), [activeImage]);
-  const activeImageMissing = missingImages.has(activeImage);
+  const isActiveImageAvailable = useAssetAvailable(activeSrc, 'image/');
+  const activeImageMissing = missingImages.has(activeImage) || isActiveImageAvailable === false;
+  const imageStyle = {
+    '--memory-image-fit': imageFit,
+    '--memory-image-position': imagePosition,
+    '--memory-image-src': `url("${activeSrc}")`
+  };
 
   const showPrevious = () => {
     setActiveIndex((current) => (current === 0 ? memory.images.length - 1 : current - 1));
@@ -50,14 +59,14 @@ export default function MemoryCarousel({ memory, index, onOpenImage }) {
   };
 
   return (
-    <article className="memory-frame" style={{ '--memory-delay': `${index * 80}ms` }}>
+    <article className={`memory-frame memory-frame-${imageFit}`} style={{ '--memory-delay': `${index * 80}ms` }}>
       <div className="memory-frame-copy">
         <p className="memory-frame-kicker">Memory {String(index + 1).padStart(2, '0')}</p>
         <h3>{memory.title}</h3>
         <p>{memory.caption}</p>
       </div>
 
-      <div className="memory-carousel" data-multiple={hasMultipleImages}>
+      <div className="memory-carousel" data-multiple={hasMultipleImages} data-fit={imageFit} style={imageStyle}>
         <button
           className="memory-photo-button"
           type="button"
@@ -68,13 +77,16 @@ export default function MemoryCarousel({ memory, index, onOpenImage }) {
           {activeImageMissing ? (
             <MissingMemory title={memory.title} />
           ) : (
-            <img
-              key={activeImage}
-              src={activeSrc}
-              alt={`${memory.title} memory ${activeIndex + 1}`}
-              loading={index < 2 ? 'eager' : 'lazy'}
-              onError={() => markMissing(activeImage)}
-            />
+            <>
+              {imageFit === 'contain' && <span className="memory-blur-backdrop" aria-hidden="true" />}
+              <img
+                key={activeImage}
+                src={activeSrc}
+                alt={`${memory.title} memory ${activeIndex + 1}`}
+                loading={index < 2 ? 'eager' : 'lazy'}
+                onError={() => markMissing(activeImage)}
+              />
+            </>
           )}
         </button>
 
