@@ -11,12 +11,21 @@ import { giftContent } from './data/content.js';
 
 export default function App() {
   const [entered, setEntered] = useState(false);
+  const [proposalUnlocked, setProposalUnlocked] = useState(false);
 
   const enterCastle = () => {
     setEntered(true);
+    setProposalUnlocked(false);
     requestAnimationFrame(() => {
       document.getElementById('first-room')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  };
+
+  const unlockProposal = () => {
+    setProposalUnlocked(true);
+    setTimeout(() => {
+      document.getElementById('final-question')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
   };
 
   return (
@@ -29,9 +38,13 @@ export default function App() {
           <ProcessVideo content={giftContent.process} />
           <Gallery content={giftContent.gallery} />
           <AdorationList content={giftContent.adoration} />
-          <AncientLetter content={giftContent.letter} />
-          <FinalQuestion content={giftContent.finalQuestion} />
-          <Footer content={giftContent.footer} />
+          <AncientLetter content={giftContent.letter} onContinue={unlockProposal} />
+          {proposalUnlocked && (
+            <>
+              <FinalQuestion id="final-question" content={giftContent.finalQuestion} />
+              <Footer content={giftContent.footer} />
+            </>
+          )}
         </main>
       )}
     </div>
