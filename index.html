@@ -277,6 +277,19 @@
         font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       }
 
+      .static-letter-closing {
+        opacity: 0.18;
+        transform: translateY(-0.5rem) scaleY(0.96);
+        filter: blur(3px);
+        transition: opacity 420ms ease, transform 420ms ease, filter 420ms ease;
+      }
+
+      .static-no {
+        color: var(--ivory) !important;
+        background: rgba(66, 16, 27, 0.5) !important;
+        transition: transform 260ms ease;
+      }
+
       .static-footer {
         color: rgba(248, 236, 210, 0.62);
         text-align: center;
@@ -396,19 +409,19 @@ This is yours.
 A memory you can keep.
 
 With love,
-Jonathan</p><button id="static-letter-continue" type="button">Continue to the question</button></article>
+Jonathan</p><button id="static-letter-continue" type="button">Close the letter and open the last room</button></article>
         </section>
 
         <section id="static-final-room" class="static-room" hidden>
           <div class="static-room-card">
-            <p class="static-eyebrow">Final hidden room</p>
+            <p class="static-eyebrow">Final Room</p>
             <h2>The question</h2>
             <p>I know you like to take things slow, and I respect that. I don’t want to pressure you or rush anything. I just want to be honest with you. I care about you, I like what we are building, and I would love to keep choosing you with more intention.</p>
             <div id="static-question">
               <h2>Would you like to be my girlfriend?</h2>
               <div class="static-answer-buttons">
-                <button class="static-answer" type="button">Yes 🖤</button>
-                <button class="static-answer" type="button">Also yes 🦇</button>
+                <button class="static-answer static-yes" type="button">Yes 🖤</button>
+                <button id="static-no" class="static-no" type="button">No</button>
               </div>
             </div>
             <div id="static-answer-response" hidden>
@@ -441,6 +454,9 @@ Jonathan</p><button id="static-letter-continue" type="button">Continue to the qu
         const finalRoom = document.getElementById('static-final-room');
         const staticFooter = document.getElementById('static-footer');
         const response = document.getElementById('static-answer-response');
+        const staticNo = document.getElementById('static-no');
+        const staticNoLabels = ['No', 'Are you sure?', 'Think about it…', 'But I made a castle…', 'Last chance?', 'no?'];
+        let staticNoClicks = 0;
 
         enter?.addEventListener('click', () => {
           castle.hidden = false;
@@ -493,7 +509,7 @@ Jonathan</p><button id="static-letter-continue" type="button">Continue to the qu
           image.addEventListener('error', () => {
             const placeholder = document.createElement('div');
             placeholder.className = 'static-gallery-placeholder';
-            placeholder.textContent = 'Photo will be added soon';
+            placeholder.textContent = 'This memory will appear soon.';
             image.replaceWith(placeholder);
           });
         });
@@ -503,9 +519,12 @@ Jonathan</p><button id="static-letter-continue" type="button">Continue to the qu
         });
 
         letterContinue?.addEventListener('click', () => {
-          finalRoom.hidden = false;
-          staticFooter.hidden = false;
-          finalRoom?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          letter.classList.add('static-letter-closing');
+          window.setTimeout(() => {
+            finalRoom.hidden = false;
+            staticFooter.hidden = false;
+            finalRoom?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 420);
         });
 
 
@@ -513,6 +532,12 @@ Jonathan</p><button id="static-letter-continue" type="button">Continue to the qu
           button.addEventListener('click', () => {
             response.hidden = false;
           });
+        });
+
+        staticNo?.addEventListener('click', () => {
+          staticNoClicks = Math.min(staticNoClicks + 1, staticNoLabels.length - 1);
+          staticNo.textContent = staticNoLabels[staticNoClicks];
+          staticNo.style.transform = `scale(${Math.max(0.48, 1 - staticNoClicks * 0.12)}) translate(${Math.min(staticNoClicks * 0.35, 1.35)}rem, ${staticNoClicks % 2 === 0 ? '-' : ''}${Math.min(staticNoClicks * 0.12, 0.48)}rem)`;
         });
       })();
     </script>

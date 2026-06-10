@@ -5,7 +5,7 @@ function MissingMemory({ title }) {
   return (
     <div className="memory-image-placeholder" role="img" aria-label={`Missing image for ${title}`}>
       <span>Memory waiting</span>
-      <small>This photo needs a web-safe JPG upload.</small>
+      <small>This memory will appear soon.</small>
     </div>
   );
 }
