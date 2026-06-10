@@ -330,21 +330,21 @@
             <h2>Something I made only for you</h2>
             <p>This gift was made with time, intention, and a little piece of who I am. Every detail was meant to feel personal, dark, romantic, mysterious, and beautiful.</p>
             <div class="static-media">
-              <video controls playsinline preload="metadata" src="assets/videos/gift-process.mp4"></video>
+              <video id="static-video" controls playsinline preload="metadata" src="assets/videos/gift-process.mp4"></video>
               <p id="static-video-message" class="static-message">The process video will be added soon if the file is not uploaded yet.</p>
             </div>
           </div>
         </section>
 
         <section class="static-room">
-          <p class="static-eyebrow">Memory room</p>
-          <h2>A room of memories</h2>
-          <p>Little pieces of beauty, time, and feeling.</p>
+          <p class="static-eyebrow">Memory Room</p>
+          <h2>Little pieces of this memory</h2>
+          <p>Moments, details, and feelings I wanted to keep for you.</p>
           <div class="static-gallery">
-            <figure class="static-gallery-card"><img src="assets/images/amber-01.jpg" alt="Amber memory 1" /><figcaption>Memory 01</figcaption></figure>
-            <figure class="static-gallery-card"><img src="assets/images/amber-02.jpg" alt="Amber memory 2" /><figcaption>Memory 02</figcaption></figure>
-            <figure class="static-gallery-card"><img src="assets/images/gift-01.jpg" alt="Gift memory 1" /><figcaption>Memory 03</figcaption></figure>
-            <figure class="static-gallery-card"><img src="assets/images/gift-02.jpg" alt="Gift memory 2" /><figcaption>Memory 04</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-me.jpg" alt="Us memory" /><figcaption>Memory 01</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-01.jpg" alt="Amber memory 2" /><figcaption>Memory 02</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-06.jpg" alt="Amber memory 3" /><figcaption>Memory 03</figcaption></figure>
+            <figure class="static-gallery-card"><img src="assets/images/amber-11.jpg" alt="Amber memory 4" /><figcaption>Memory 04</figcaption></figure>
           </div>
         </section>
 
@@ -369,32 +369,42 @@
           <button id="static-letter-button" class="static-ghost-button" type="button">Open the Letter</button>
           <article id="static-letter" class="static-letter" hidden><p>My dear Amber,
 
-I wanted to give you something that was more than just a present.
+I wanted to make something that felt personal.
 Something that could hold a memory, a feeling, and a part of me.
 
-While I was making this, I thought about you.
-About your smile, your energy, your darkness, your beauty, and the way you make ordinary moments feel different.
+While I was making this, I kept thinking about you.
+Your smile.
+Your energy.
+Your darkness.
+Your beauty.
+The way you make ordinary moments feel different.
 
-This gift was made with time, patience, mistakes, care, and love.
-Every piece, every detail, every idea behind it was created because I wanted you to feel special.
+I wanted you to feel special, not because of how big the gift is, but because of the intention behind it.
+Because every detail was made with care.
+Because every part of this little world was created with you in my heart.
 
-You have a way of making the world feel a little more magical.
-And I hope this little world I created for you reminds you that you are deeply appreciated, admired, and cared for.
+You have a way of making things feel more magical.
+A little darker.
+A little sweeter.
+A little more alive.
+
+I hope that when you see this, you feel admired.
+I hope you feel appreciated.
+I hope you feel cared for.
 
 This is yours.
-A memory you can keep forever.
+A memory you can keep.
 
 With love,
-Jonathan</p></article>
+Jonathan</p><button id="static-letter-continue" type="button">Continue to the question</button></article>
         </section>
 
-        <section class="static-room">
+        <section id="static-final-room" class="static-room" hidden>
           <div class="static-room-card">
-            <p class="static-eyebrow">Final question room</p>
+            <p class="static-eyebrow">Final hidden room</p>
             <h2>The question</h2>
-            <p>I know you like to take things slow, and I respect that. I don’t want to pressure you. I just want to be honest with you. I really like what we are building, I care about you, and I would love to keep choosing you in a more intentional way.</p>
-            <button id="static-question-button" type="button">Continue</button>
-            <div id="static-question" hidden>
+            <p>I know you like to take things slow, and I respect that. I don’t want to pressure you or rush anything. I just want to be honest with you. I care about you, I like what we are building, and I would love to keep choosing you with more intention.</p>
+            <div id="static-question">
               <h2>Would you like to be my girlfriend?</h2>
               <div class="static-answer-buttons">
                 <button class="static-answer" type="button">Yes 🖤</button>
@@ -408,7 +418,7 @@ Jonathan</p></article>
           </div>
         </section>
 
-        <footer class="static-footer">
+        <footer id="static-footer" class="static-footer" hidden>
           <p>Made with intention by Jonathan.</p>
           <p>JAKS</p>
         </footer>
@@ -423,10 +433,13 @@ Jonathan</p></article>
         const musicButton = document.getElementById('static-music-button');
         const audio = document.getElementById('static-audio');
         const musicMessage = document.getElementById('static-music-message');
+        const video = document.getElementById('static-video');
+        const videoMessage = document.getElementById('static-video-message');
         const letterButton = document.getElementById('static-letter-button');
         const letter = document.getElementById('static-letter');
-        const questionButton = document.getElementById('static-question-button');
-        const question = document.getElementById('static-question');
+        const letterContinue = document.getElementById('static-letter-continue');
+        const finalRoom = document.getElementById('static-final-room');
+        const staticFooter = document.getElementById('static-footer');
         const response = document.getElementById('static-answer-response');
 
         enter?.addEventListener('click', () => {
@@ -450,10 +463,31 @@ Jonathan</p></article>
           }
         });
 
-        audio?.addEventListener('error', () => {
+        const verifyAssetType = async (element, expectedTypePrefix, onMissing) => {
+          if (!element?.currentSrc && !element?.src) return;
+          try {
+            const response = await fetch(element.currentSrc || element.src, { method: 'HEAD' });
+            const contentType = response.headers.get('content-type') || '';
+            if (!response.ok || !contentType.toLowerCase().startsWith(expectedTypePrefix)) onMissing();
+          } catch {
+            onMissing();
+          }
+        };
+
+        const showMissingMusic = () => {
           if (musicButton) musicButton.hidden = true;
           if (musicMessage) musicMessage.hidden = false;
-        });
+        };
+
+        const showMissingVideo = () => {
+          if (video) video.hidden = true;
+          if (videoMessage) videoMessage.hidden = false;
+        };
+
+        audio?.addEventListener('error', showMissingMusic);
+        video?.addEventListener('error', showMissingVideo);
+        verifyAssetType(audio, 'audio/', showMissingMusic);
+        verifyAssetType(video, 'video/', showMissingVideo);
 
         document.querySelectorAll('.static-gallery-card img').forEach((image) => {
           image.addEventListener('error', () => {
@@ -468,10 +502,12 @@ Jonathan</p></article>
           letter.hidden = false;
         });
 
-        questionButton?.addEventListener('click', () => {
-          question.hidden = false;
-          questionButton.hidden = true;
+        letterContinue?.addEventListener('click', () => {
+          finalRoom.hidden = false;
+          staticFooter.hidden = false;
+          finalRoom?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+
 
         document.querySelectorAll('.static-answer').forEach((button) => {
           button.addEventListener('click', () => {

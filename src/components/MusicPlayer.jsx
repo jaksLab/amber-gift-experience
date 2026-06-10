@@ -1,13 +1,17 @@
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import { useAssetAvailable } from '../utils/assets.js';
 
 export default function MusicPlayer({ content, variant = 'room' }) {
+  const titleId = useId();
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const isAudioAvailable = useAssetAvailable(content.src, 'audio/');
+  const showMissingAudio = hasError || isAudioAvailable === false;
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
-    if (!audio || hasError) return;
+    if (!audio || showMissingAudio || isAudioAvailable !== true) return;
 
     if (isPlaying) {
       audio.pause();
@@ -25,15 +29,17 @@ export default function MusicPlayer({ content, variant = 'room' }) {
   };
 
   return (
-    <section className={`music-player music-player-${variant}`} aria-labelledby="music-title">
+    <section className={`music-player music-player-${variant}`} aria-labelledby={titleId}>
       <div className="music-copy">
         <p className="music-kicker">Music chamber</p>
-        <h2 id="music-title">{content.title}</h2>
+        <h2 id={titleId}>{content.title}</h2>
         <p>{content.text}</p>
       </div>
 
-      {hasError ? (
+      {showMissingAudio ? (
         <p className="asset-message" role="status">{content.missingText}</p>
+      ) : isAudioAvailable === null ? (
+        <p className="asset-message" role="status">Preparing the music chamber…</p>
       ) : (
         <>
           <audio

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function AncientLetter({ content }) {
+export default function AncientLetter({ content, onContinue }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,6 +20,11 @@ export default function AncientLetter({ content }) {
           {content.body.split('\n').map((line, index) => (
             <p key={`${index}-${line}`}>{line || '\u00A0'}</p>
           ))}
+          <div className="letter-continue">
+            <button className="button button-gold" type="button" onClick={onContinue}>
+              {content.continueButton}
+            </button>
+          </div>
         </article>
       )}
     </section>
