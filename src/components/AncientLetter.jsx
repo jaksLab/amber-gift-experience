@@ -1,7 +1,15 @@
 import { useState } from 'react';
 
-export default function AncientLetter({ content }) {
+export default function AncientLetter({ content, onContinue }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const openLastRoom = () => {
+    setIsClosing(true);
+    window.setTimeout(() => {
+      onContinue();
+    }, 420);
+  };
 
   return (
     <section className="room reveal-room" aria-labelledby="letter-title">
@@ -15,11 +23,16 @@ export default function AncientLetter({ content }) {
       </button>
 
       {isOpen && (
-        <article className="parchment">
+        <article className={isClosing ? 'parchment parchment-closing' : 'parchment'}>
           <span className="wax-seal" aria-hidden="true">A</span>
           {content.body.split('\n').map((line, index) => (
             <p key={`${index}-${line}`}>{line || '\u00A0'}</p>
           ))}
+          <div className="letter-continue">
+            <button className="button button-gold" type="button" onClick={openLastRoom} disabled={isClosing}>
+              {content.continueLabel}
+            </button>
+          </div>
         </article>
       )}
     </section>
