@@ -48,11 +48,6 @@ export const giftContent = {
         images: ["assets/images/amber-me.jpg"]
       },
       {
-        title: "Her light",
-        caption: "The kind of beauty that stays in my mind.",
-        images: ["assets/images/amber.jpg"]
-      },
-      {
         title: "Little moments together",
         caption: "Simple moments that felt different because they were with you.",
         images: [
@@ -65,8 +60,7 @@ export const giftContent = {
         title: "Soft memories",
         caption: "Small pieces of time that felt sweet and real.",
         images: [
-          "assets/images/amber-04.jpg",
-          "assets/images/amber-05.jpg"
+          "assets/images/amber-04.jpg"
         ]
       },
       {
@@ -83,7 +77,6 @@ export const giftContent = {
         title: "Beautiful pieces of her",
         caption: "Little pieces of you that I wanted to keep close.",
         images: [
-          "assets/images/amber-10.jpg",
           "assets/images/amber-11.jpg",
           "assets/images/amber-12.jpg",
           "assets/images/amber-13.jpg",
