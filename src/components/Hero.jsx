@@ -15,13 +15,13 @@ export default function Hero({ content, music, onEnter }) {
         <p className="hero-subtitle">{content.subtitle}</p>
         <p className="hero-note">{content.smallText}</p>
 
+        <MusicPlayer content={music} variant="hero" />
+
         <div className="hero-actions">
           <button className="button button-gold" type="button" onClick={onEnter}>
             {content.button}
           </button>
         </div>
-
-        <MusicPlayer content={music} variant="hero" />
       </div>
     </header>
   );

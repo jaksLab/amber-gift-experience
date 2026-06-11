@@ -1,4 +1,4 @@
-const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
+export const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 export const giftContent = {
   recipientName: "Amber",
@@ -11,12 +11,12 @@ export const giftContent = {
     button: "Enter the Castle"
   },
   music: {
+    eyebrow: "Music Chamber",
     title: "Music at the entrance",
-    text: "A quiet soundtrack for this little world.",
+    description: "Press play before entering this little world.",
     playLabel: "Play Music",
     pauseLabel: "Pause Music",
-    missingText: "Music will be added soon.",
-    src: asset("assets/audio/background-music.mp3")
+    src: "assets/audio/background-music.mp3"
   },
   welcome: {
     roomLabel: "First room",
@@ -24,24 +24,63 @@ export const giftContent = {
     text: "Amber, this is not just a page. It is a small piece of the story behind your gift — the time, the details, the mistakes, and the intention that went into making something only for you."
   },
   process: {
-    roomLabel: "Creation room",
+    roomLabel: "Creation Room",
     title: "Something I made only for you",
-    text: "This gift was made with time, intention, and a little piece of who I am. Every detail was meant to feel personal, dark, romantic, mysterious, and beautiful.",
-    details: ["A little glimpse behind it", "3D model", "Printing process", "The box", "Final preparation"],
+    text: "I wanted to make something that felt like you — a little dark, a little sweet, mysterious, beautiful, and impossible to forget. While I was creating it, I kept thinking about your smile, your energy, and the way you make simple moments feel different.",
+    details: ["Made with care", "For you", "A little darker", "A little sweeter"],
+    videoLabel: "A little glimpse behind it",
+    videoDescription: "This is just a small look at the quiet moments behind your gift — the patience, the care, and the feeling I put into making something for you.",
     videoSrc: asset("assets/videos/gift-process.mp4"),
-    missingText: "The process video will be added soon."
+    missingText: "A little glimpse will appear here soon."
   },
   gallery: {
-    roomLabel: "Memory room",
-    title: "A room of memories",
-    subtitle: "Little pieces of beauty, time, and feeling.",
-    images: [
-      asset("assets/images/amber-01.jpg"),
-      asset("assets/images/amber-02.jpg"),
-      asset("assets/images/gift-01.jpg"),
-      asset("assets/images/gift-02.jpg"),
-      asset("assets/images/process-01.jpg"),
-      asset("assets/images/process-02.jpg")
+    eyebrow: "Memory Room",
+    title: "Little pieces of this memory",
+    subtitle: "Moments, details, and feelings I wanted to keep for you.",
+    memories: [
+      {
+        title: "Us",
+        caption: "The first time I saw you in person — a moment I knew I would keep.",
+        imageFit: "contain",
+        imagePosition: "center",
+        images: ["assets/images/amber-me.jpg"]
+      },
+      {
+        title: "Little moments together",
+        caption: "Simple moments that felt different because they were with you.",
+        images: [
+          "assets/images/amber-01.jpg",
+          "assets/images/amber-02.jpg",
+          "assets/images/amber-03.jpg"
+        ]
+      },
+      {
+        title: "Soft memories",
+        caption: "Small pieces of time that felt sweet and real.",
+        images: [
+          "assets/images/amber-04.jpg"
+        ]
+      },
+      {
+        title: "Waterfall day",
+        caption: "A memory with water, light, and you in it.",
+        images: [
+          "assets/images/amber-06.jpg",
+          "assets/images/amber-07.jpg",
+          "assets/images/amber-08.jpg",
+          "assets/images/amber-09.jpg"
+        ]
+      },
+      {
+        title: "Beautiful pieces of her",
+        caption: "Little pieces of you that I wanted to keep close.",
+        images: [
+          "assets/images/amber-11.jpg",
+          "assets/images/amber-12.jpg",
+          "assets/images/amber-13.jpg",
+          "assets/images/amber-14.jpg"
+        ]
+      }
     ]
   },
   adoration: {
@@ -60,36 +99,54 @@ export const giftContent = {
     roomLabel: "Ancient letter room",
     title: "A letter for you",
     button: "Open the Letter",
+    continueLabel: "Close the letter and open the last room",
     body: `My dear Amber,
 
-I wanted to give you something that was more than just a present.
+I wanted to make something that felt personal.
 Something that could hold a memory, a feeling, and a part of me.
 
-While I was making this, I thought about you.
-About your smile, your energy, your darkness, your beauty, and the way you make ordinary moments feel different.
+While I was making this, I kept thinking about you.
+Your smile.
+Your energy.
+Your darkness.
+Your beauty.
+The way you make ordinary moments feel different.
 
-This gift was made with time, patience, mistakes, care, and love.
-Every piece, every detail, every idea behind it was created because I wanted you to feel special.
+I wanted you to feel special, not because of how big the gift is, but because of the intention behind it.
+Because every detail was made with care.
+Because every part of this little world was created with you in my heart.
 
-You have a way of making the world feel a little more magical.
-And I hope this little world I created for you reminds you that you are deeply appreciated, admired, and cared for.
+You have a way of making things feel more magical.
+A little darker.
+A little sweeter.
+A little more alive.
+
+I hope that when you see this, you feel admired.
+I hope you feel appreciated.
+I hope you feel cared for.
 
 This is yours.
-A memory you can keep forever.
+A memory you can keep.
 
 With love,
 Jonathan`
   },
   finalQuestion: {
-    roomLabel: "Final question room",
+    eyebrow: "Final Room",
     title: "The question",
-    text: "I know you like to take things slow, and I respect that. I don’t want to pressure you. I just want to be honest with you. I really like what we are building, I care about you, and I would love to keep choosing you in a more intentional way.",
-    continueButton: "Continue",
+    text: "I know you like to take things slow, and I respect that. I don’t want to pressure you or rush anything. I just want to be honest with you. I care about you, I like what we are building, and I would love to keep choosing you with more intention.",
     question: "Would you like to be my girlfriend?",
-    yesButton: "Yes 🖤",
-    ofCourseButton: "Also yes 🦇",
-    response: "You just made this night unforgettable.",
-    forever: "This little castle will always be here for you."
+    yesLabel: "Yes 🖤",
+    noLabels: [
+      "No",
+      "Are you sure?",
+      "Think about it…",
+      "But I made a castle…",
+      "Last chance?",
+      "no?"
+    ],
+    acceptedMessage: "You just made this night unforgettable.",
+    acceptedSubtext: "This little castle will always be here for you."
   },
   footer: {
     text: "Made with intention by Jonathan.",
