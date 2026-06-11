@@ -26,6 +26,7 @@ export default function MusicPlayer({ content, variant = 'room' }) {
       console.error('Audio play failed:', error);
       setHasError(true);
       setIsPlaying(false);
+      setShowYouTube(true);
     }
   };
 
