@@ -339,7 +339,7 @@
           <section class="static-music" aria-label="Music chamber">
             <p class="static-eyebrow">Music Chamber</p>
             <p>Press play before entering this little world.</p>
-            <audio id="static-audio" preload="none" src="assets/audio/background-music.mp3"></audio>
+            <audio id="static-audio" preload="auto" loop src="assets/audio/background-music.mp3"></audio>
             <button id="static-music-button" class="static-music-button" type="button">Play Music</button>
             <div id="static-youtube-music" class="static-youtube-music" hidden>
               <p>Use the mini YouTube player if the local MP3 is unavailable.</p>
@@ -495,11 +495,13 @@ Jonathan</p><button id="static-letter-continue" type="button">Close the letter a
             return;
           }
           try {
+            audio.volume = 0.65;
             await audio.play();
             musicButton.textContent = 'Pause Music';
-          } catch {
-            musicButton.hidden = true;
-            youtubeMusic.hidden = false;
+            musicMessage.hidden = true;
+          } catch (error) {
+            console.error('Audio play failed:', error);
+            musicMessage.hidden = false;
           }
         });
 
@@ -515,7 +517,6 @@ Jonathan</p><button id="static-letter-continue" type="button">Close the letter a
         };
 
         const showMissingMusic = () => {
-          if (musicButton) musicButton.hidden = true;
           if (musicMessage) musicMessage.hidden = false;
         };
 

@@ -338,6 +338,8 @@ h3 {
 
 .music-button {
   min-width: min(100%, 13rem);
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .asset-message {

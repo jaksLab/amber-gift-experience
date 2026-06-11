@@ -9,23 +9,22 @@ export default function MusicPlayer({ content, variant = 'room' }) {
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
-
-    if (!canUseLocalAudio || !audio) {
-      setShowYouTube(true);
-      return;
-    }
-
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-      return;
-    }
+    if (!audio) return;
 
     try {
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+        return;
+      }
+
+      audio.volume = 0.65;
       await audio.play();
+      setHasError(false);
       setIsPlaying(true);
-    } catch {
-      setHasAudioError(true);
+    } catch (error) {
+      console.error('Audio play failed:', error);
+      setHasError(true);
       setIsPlaying(false);
       setShowYouTube(true);
     }
@@ -42,20 +41,24 @@ export default function MusicPlayer({ content, variant = 'room' }) {
       <audio
         ref={audioRef}
         src={audioSrc}
-        preload="none"
+        preload="auto"
+        loop
         onError={() => {
           setHasError(true);
           setIsPlaying(false);
         }}
         onEnded={() => setIsPlaying(false)}
+        onPause={() => setIsPlaying(false)}
       />
 
-      {hasError ? (
-        <p className="asset-message" role="status">Music will be added soon.</p>
-      ) : (
-        <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
-          {isPlaying ? content.pauseLabel : content.playLabel}
-        </button>
+      <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
+        {isPlaying ? content.pauseLabel : content.playLabel}
+      </button>
+
+      {hasError && (
+        <p className="asset-message music-error" role="status">
+          Music could not load yet.
+        </p>
       )}
     </section>
   );
