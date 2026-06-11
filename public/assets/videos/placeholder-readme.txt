@@ -1,4 +1,4 @@
-Place the gift creation process video in this folder as:
+Place the gift glimpse video in this folder as:
 - gift-process.mp4
 
-The video will not autoplay. If the file is missing, the site displays: “The video will be added soon.”
+The website shows a romantic placeholder if the file is missing.

@@ -1,9 +1,11 @@
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 
 export default function MusicPlayer({ content, variant = 'room' }) {
+  const titleId = useId();
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const audioSrc = `${import.meta.env.BASE_URL}${content.src}`;
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
@@ -25,28 +27,30 @@ export default function MusicPlayer({ content, variant = 'room' }) {
   };
 
   return (
-    <section className={`music-player music-player-${variant}`} aria-labelledby="music-title">
+    <section className={`music-player music-player-${variant}`} aria-labelledby={titleId}>
       <div className="music-copy">
-        <p className="music-kicker">Music chamber</p>
-        <h2 id="music-title">{content.title}</h2>
-        <p>{content.text}</p>
+        <p className="music-kicker">{content.eyebrow}</p>
+        <h2 id={titleId}>{content.title}</h2>
+        <p>{content.description}</p>
       </div>
 
+      <audio
+        ref={audioRef}
+        src={audioSrc}
+        preload="none"
+        onError={() => {
+          setHasError(true);
+          setIsPlaying(false);
+        }}
+        onEnded={() => setIsPlaying(false)}
+      />
+
       {hasError ? (
-        <p className="asset-message" role="status">{content.missingText}</p>
+        <p className="asset-message" role="status">Music will be added soon.</p>
       ) : (
-        <>
-          <audio
-            ref={audioRef}
-            src={content.src}
-            preload="none"
-            onError={() => setHasError(true)}
-            onEnded={() => setIsPlaying(false)}
-          />
-          <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
-            {isPlaying ? content.pauseLabel : content.playLabel}
-          </button>
-        </>
+        <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
+          {isPlaying ? content.pauseLabel : content.playLabel}
+        </button>
       )}
     </section>
   );
