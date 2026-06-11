@@ -14,17 +14,21 @@ export default function ProcessVideo({ content }) {
         <p>{content.text}</p>
       </div>
 
-      <ul className="process-tags" aria-label="Creation process details">
+      <ul className="process-tags" aria-label="Gift details">
         {content.details.map((detail) => (
           <li key={detail}>{detail}</li>
         ))}
       </ul>
 
-      <div className="media-frame">
+      <div className="media-frame" aria-label={content.videoLabel}>
+        <div className="media-frame-copy">
+          <p>{content.videoLabel}</p>
+          <span>{content.videoDescription}</span>
+        </div>
         {showMissingVideo ? (
           <div className="asset-placeholder" role="status">{content.missingText}</div>
         ) : isVideoAvailable === null ? (
-          <div className="asset-placeholder" role="status">Preparing the process video…</div>
+          <div className="asset-placeholder" role="status">A little glimpse is being prepared…</div>
         ) : (
           <video
             controls
@@ -32,7 +36,7 @@ export default function ProcessVideo({ content }) {
             preload="metadata"
             className="process-video"
             onError={() => setHasError(true)}
-            aria-label="Gift creation process video"
+            aria-label={content.videoLabel}
           >
             <source src={content.videoSrc} type="video/mp4" onError={() => setHasError(true)} />
             {content.missingText}

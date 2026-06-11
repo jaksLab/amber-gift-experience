@@ -11,16 +11,12 @@ export const giftContent = {
     button: "Enter the Castle"
   },
   music: {
+    eyebrow: "Music Chamber",
     title: "Music at the entrance",
-    text: "A dark romantic soundtrack for the castle doors.",
+    description: "Press play before entering this little world.",
     playLabel: "Play Music",
     pauseLabel: "Pause Music",
-    youtubeLabel: "Open YouTube player",
-    youtubeText: "If the browser cannot play the local soundtrack, use the mini YouTube player below.",
-    missingText: "The local MP3 is not available, so the YouTube player is ready instead.",
-    youtubeUrl: "https://www.youtube.com/watch?v=iuTkkMuKEec",
-    youtubeEmbedSrc: "https://www.youtube.com/embed/iuTkkMuKEec?rel=0&modestbranding=1",
-    src: asset("assets/audio/background-music.mp3")
+    src: "assets/audio/background-music.mp3"
   },
   welcome: {
     roomLabel: "First room",
@@ -28,12 +24,14 @@ export const giftContent = {
     text: "Amber, this is not just a page. It is a small piece of the story behind your gift — the time, the details, the mistakes, and the intention that went into making something only for you."
   },
   process: {
-    roomLabel: "Creation room",
+    roomLabel: "Creation Room",
     title: "Something I made only for you",
-    text: "This gift was made with time, intention, and a little piece of who I am. Every detail was meant to feel personal, dark, romantic, mysterious, and beautiful.",
-    details: ["A little glimpse behind it", "3D model", "Printing process", "The box", "Final preparation"],
+    text: "I wanted to make something that felt like you — a little dark, a little sweet, mysterious, beautiful, and impossible to forget. While I was creating it, I kept thinking about your smile, your energy, and the way you make simple moments feel different.",
+    details: ["Made with care", "For you", "A little darker", "A little sweeter"],
+    videoLabel: "A little glimpse behind it",
+    videoDescription: "This is just a small look at the quiet moments behind your gift — the patience, the care, and the feeling I put into making something for you.",
     videoSrc: asset("assets/videos/gift-process.mp4"),
-    missingText: "The process video will be added soon."
+    missingText: "A little glimpse will appear here soon."
   },
   gallery: {
     eyebrow: "Memory Room",
