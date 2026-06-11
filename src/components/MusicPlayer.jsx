@@ -9,7 +9,11 @@ export default function MusicPlayer({ content, variant = 'room' }) {
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
-    if (!audio || hasError) return;
+
+    if (!canUseLocalAudio || !audio) {
+      setShowYouTube(true);
+      return;
+    }
 
     if (isPlaying) {
       audio.pause();
@@ -21,8 +25,9 @@ export default function MusicPlayer({ content, variant = 'room' }) {
       await audio.play();
       setIsPlaying(true);
     } catch {
-      setHasError(true);
+      setHasAudioError(true);
       setIsPlaying(false);
+      setShowYouTube(true);
     }
   };
 

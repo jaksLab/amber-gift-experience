@@ -194,6 +194,27 @@
         color: var(--gold-bright) !important;
       }
 
+      .static-youtube-music {
+        margin-top: 0.85rem;
+        padding: 0.7rem;
+        border: 1px solid rgba(198, 161, 90, 0.34);
+        border-radius: 1rem;
+        background: rgba(11, 8, 13, 0.78);
+      }
+
+      .static-youtube-music p {
+        margin: 0 0 0.6rem;
+        font-size: 0.9rem;
+      }
+
+      .static-youtube-music iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        border-radius: 0.75rem;
+        background: #050406;
+      }
+
       .static-castle {
         padding: clamp(3rem, 9vw, 6rem) 1rem;
         background:
@@ -320,7 +341,10 @@
             <p>Press play before entering this little world.</p>
             <audio id="static-audio" preload="none" src="assets/audio/background-music.mp3"></audio>
             <button id="static-music-button" class="static-music-button" type="button">Play Music</button>
-            <p id="static-music-message" class="static-message" hidden>Music will be added soon.</p>
+            <div id="static-youtube-music" class="static-youtube-music" hidden>
+              <p>Use the mini YouTube player if the local MP3 is unavailable.</p>
+              <iframe title="Music at the entrance" src="https://www.youtube.com/embed/iuTkkMuKEec?rel=0&amp;modestbranding=1" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
           </section>
           <div class="static-actions">
             <button id="static-enter" type="button">Enter the Castle</button>
@@ -475,7 +499,7 @@ Jonathan</p><button id="static-letter-continue" type="button">Close the letter a
             musicButton.textContent = 'Pause Music';
           } catch {
             musicButton.hidden = true;
-            musicMessage.hidden = false;
+            youtubeMusic.hidden = false;
           }
         });
 
