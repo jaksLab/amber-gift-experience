@@ -24,14 +24,14 @@ export const giftContent = {
     text: "Amber, this is not just a page. It is a small piece of the story behind your gift — the time, the details, the mistakes, and the intention that went into making something only for you."
   },
   process: {
-    roomLabel: "Creation Room",
+    eyebrow: "Creation Room",
     title: "Something I made only for you",
     text: "I wanted to make something that felt like you — a little dark, a little sweet, mysterious, beautiful, and impossible to forget. While I was creating it, I kept thinking about your smile, your energy, and the way you make simple moments feel different.",
-    details: ["Made with care", "For you", "A little darker", "A little sweeter"],
-    videoLabel: "A little glimpse behind it",
+    tags: ["Made with care", "For you", "A little darker", "A little sweeter"],
+    videoTitle: "A little glimpse behind it",
     videoDescription: "This is just a small look at the quiet moments behind your gift — the patience, the care, and the feeling I put into making something for you.",
-    videoSrc: asset("assets/videos/gift-process.mp4"),
-    missingText: "A little glimpse will appear here soon."
+    videoSrc: "assets/videos/Video.MOV",
+    videoFallback: "A little glimpse will appear here soon."
   },
   gallery: {
     eyebrow: "Memory Room",
