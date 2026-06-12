@@ -4,6 +4,8 @@ import { useAssetAvailable } from '../utils/assets.js';
 export default function ProcessVideo({ content }) {
   const [hasError, setHasError] = useState(false);
   const videoSrc = `${import.meta.env.BASE_URL}${content.videoSrc}`;
+  const isVideoAvailable = useAssetAvailable(videoSrc, 'video/');
+  const showFallback = hasError || isVideoAvailable === false;
 
   return (
     <section className="room reveal-room" aria-labelledby="process-title">
@@ -24,8 +26,10 @@ export default function ProcessVideo({ content }) {
           <p>{content.videoTitle}</p>
           <span>{content.videoDescription}</span>
         </div>
-        {hasError ? (
+        {showFallback ? (
           <div className="asset-placeholder" role="status">{content.videoFallback}</div>
+        ) : isVideoAvailable === null ? (
+          <div className="asset-placeholder" role="status">A little glimpse is being prepared…</div>
         ) : (
           <video
             className="process-video creation-video"

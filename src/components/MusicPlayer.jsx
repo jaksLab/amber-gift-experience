@@ -1,4 +1,5 @@
 import { useId, useRef, useState } from 'react';
+import { useAssetAvailable } from '../utils/assets.js';
 
 export default function MusicPlayer({ content, variant = 'room' }) {
   const titleId = useId();
@@ -6,10 +7,15 @@ export default function MusicPlayer({ content, variant = 'room' }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
   const audioSrc = `${import.meta.env.BASE_URL}${content.src}`;
+  const isAudioAvailable = useAssetAvailable(audioSrc, 'audio/');
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || isAudioAvailable === false) {
+      setHasError(true);
+      setIsPlaying(false);
+      return;
+    }
 
     try {
       if (isPlaying) {
@@ -51,11 +57,17 @@ export default function MusicPlayer({ content, variant = 'room' }) {
         onPause={() => setIsPlaying(false)}
       />
 
-      <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
-        {isPlaying ? content.pauseLabel : content.playLabel}
-      </button>
+      {isAudioAvailable === null && (
+        <p className="asset-message" role="status">Preparing the music chamber…</p>
+      )}
 
-      {hasError && (
+      {isAudioAvailable !== false && (
+        <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
+          {isPlaying ? content.pauseLabel : content.playLabel}
+        </button>
+      )}
+
+      {(hasError || isAudioAvailable === false) && (
         <p className="asset-message music-error" role="status">
           Music could not load yet.
         </p>
