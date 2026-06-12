@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAssetAvailable } from '../utils/assets.js';
 
 export default function ProcessVideo({ content }) {
   const [hasError, setHasError] = useState(false);
