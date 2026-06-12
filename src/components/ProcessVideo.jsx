@@ -2,36 +2,41 @@ import { useState } from 'react';
 
 export default function ProcessVideo({ content }) {
   const [hasError, setHasError] = useState(false);
+  const videoSrc = `${import.meta.env.BASE_URL}${content.videoSrc}`;
 
   return (
     <section className="room reveal-room" aria-labelledby="process-title">
       <div className="section-heading">
-        <p className="eyebrow">{content.roomLabel}</p>
+        <p className="eyebrow">{content.eyebrow}</p>
         <h2 id="process-title">{content.title}</h2>
         <p>{content.text}</p>
       </div>
 
-      <ul className="process-tags" aria-label="Creation process details">
-        {content.details.map((detail) => (
+      <ul className="process-tags" aria-label="Gift details">
+        {content.tags.map((detail) => (
           <li key={detail}>{detail}</li>
         ))}
       </ul>
 
-      <div className="media-frame">
-        {!hasError ? (
+      <div className="media-frame" aria-label={content.videoTitle}>
+        <div className="media-frame-copy">
+          <p>{content.videoTitle}</p>
+          <span>{content.videoDescription}</span>
+        </div>
+        {hasError ? (
+          <div className="asset-placeholder" role="status">{content.videoFallback}</div>
+        ) : (
           <video
+            className="process-video creation-video"
+            src={videoSrc}
             controls
             playsInline
             preload="metadata"
-            className="process-video"
             onError={() => setHasError(true)}
-            aria-label="Gift creation process video"
+            aria-label={content.videoTitle}
           >
-            <source src={content.videoSrc} type="video/mp4" />
-            {content.missingText}
+            Sorry, your browser does not support this video.
           </video>
-        ) : (
-          <div className="asset-placeholder" role="status">{content.missingText}</div>
         )}
       </div>
     </section>
