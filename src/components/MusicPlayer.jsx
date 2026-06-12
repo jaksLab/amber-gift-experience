@@ -1,52 +1,75 @@
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import { useAssetAvailable } from '../utils/assets.js';
 
 export default function MusicPlayer({ content, variant = 'room' }) {
+  const titleId = useId();
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const audioSrc = `${import.meta.env.BASE_URL}${content.src}`;
+  const isAudioAvailable = useAssetAvailable(audioSrc, 'audio/');
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
-    if (!audio || hasError) return;
-
-    if (isPlaying) {
-      audio.pause();
+    if (!audio || isAudioAvailable === false) {
+      setHasError(true);
       setIsPlaying(false);
       return;
     }
 
     try {
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+        return;
+      }
+
+      audio.volume = 0.65;
       await audio.play();
+      setHasError(false);
       setIsPlaying(true);
-    } catch {
+    } catch (error) {
+      console.error('Audio play failed:', error);
       setHasError(true);
       setIsPlaying(false);
     }
   };
 
   return (
-    <section className={`music-player music-player-${variant}`} aria-labelledby="music-title">
+    <section className={`music-player music-player-${variant}`} aria-labelledby={titleId}>
       <div className="music-copy">
-        <p className="music-kicker">Music chamber</p>
-        <h2 id="music-title">{content.title}</h2>
-        <p>{content.text}</p>
+        <p className="music-kicker">{content.eyebrow}</p>
+        <h2 id={titleId}>{content.title}</h2>
+        <p>{content.description}</p>
       </div>
 
-      {hasError ? (
-        <p className="asset-message" role="status">{content.missingText}</p>
-      ) : (
-        <>
-          <audio
-            ref={audioRef}
-            src={content.src}
-            preload="none"
-            onError={() => setHasError(true)}
-            onEnded={() => setIsPlaying(false)}
-          />
-          <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
-            {isPlaying ? content.pauseLabel : content.playLabel}
-          </button>
-        </>
+      <audio
+        ref={audioRef}
+        src={audioSrc}
+        preload="auto"
+        loop
+        onError={() => {
+          setHasError(true);
+          setIsPlaying(false);
+        }}
+        onEnded={() => setIsPlaying(false)}
+        onPause={() => setIsPlaying(false)}
+      />
+
+      {isAudioAvailable === null && (
+        <p className="asset-message" role="status">Preparing the music chamber…</p>
+      )}
+
+      {isAudioAvailable !== false && (
+        <button className="button button-ghost music-button" type="button" onClick={toggleMusic} aria-pressed={isPlaying}>
+          {isPlaying ? content.pauseLabel : content.playLabel}
+        </button>
+      )}
+
+      {(hasError || isAudioAvailable === false) && (
+        <p className="asset-message music-error" role="status">
+          Music could not load yet.
+        </p>
       )}
     </section>
   );
