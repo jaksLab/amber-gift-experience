@@ -20,6 +20,11 @@ export default function AncientLetter({ content }) {
           {content.body.split('\n').map((line, index) => (
             <p key={`${index}-${line}`}>{line || '\u00A0'}</p>
           ))}
+          {content.closingMessage && (
+            <div className="letter-final-message" role="note">
+              <p>{content.closingMessage}</p>
+            </div>
+          )}
         </article>
       )}
     </section>
