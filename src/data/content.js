@@ -99,6 +99,11 @@ export const giftContent = {
     roomLabel: "Ancient letter room",
     title: "A letter for you",
     button: "Open the Letter",
+    closingMessage: `Gracias por regalarme parte de tu tiempo.
+
+Me hiciste feliz de una forma que no voy a olvidar, y aprendí mucho de ti.
+
+Nunca dejes de sonreír, porque tu sonrisa tiene algo especial ♥`,
     body: `My dear Amber,
 
 I wanted to make something that felt personal.

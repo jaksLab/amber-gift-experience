@@ -15,12 +15,20 @@ export default function AncientLetter({ content }) {
       </button>
 
       {isOpen && (
-        <article className="parchment">
-          <span className="wax-seal" aria-hidden="true">A</span>
-          {content.body.split('\n').map((line, index) => (
-            <p key={`${index}-${line}`}>{line || '\u00A0'}</p>
-          ))}
-        </article>
+        <>
+          <article className="parchment">
+            <span className="wax-seal" aria-hidden="true">A</span>
+            {content.body.split('\n').map((line, index) => (
+              <p key={`${index}-${line}`}>{line || '\u00A0'}</p>
+            ))}
+          </article>
+
+          <div className="letter-closing-message" role="note">
+            {content.closingMessage.split('\n').map((line, index) => (
+              <p key={`${index}-${line}`}>{line || '\u00A0'}</p>
+            ))}
+          </div>
+        </>
       )}
     </section>
   );

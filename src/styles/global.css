@@ -859,6 +859,28 @@ h3 {
   margin: 0;
 }
 
+.letter-closing-message {
+  width: min(100%, 46rem);
+  margin: var(--space-lg) auto 0;
+  padding: clamp(1.1rem, 4vw, 1.8rem);
+  border: 1px solid rgba(198, 161, 90, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--ivory);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(240, 216, 145, 0.1), transparent 12rem),
+    linear-gradient(145deg, rgba(66, 16, 27, 0.58), rgba(11, 8, 13, 0.84));
+  box-shadow: var(--shadow-deep), 0 0 36px rgba(198, 161, 90, 0.12);
+  font-family: var(--font-title);
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
+  line-height: 1.8;
+  text-align: center;
+  animation: roomReveal 520ms ease 180ms both;
+}
+
+.letter-closing-message p {
+  margin: 0;
+}
+
 .wax-seal {
   position: absolute;
   top: 1rem;

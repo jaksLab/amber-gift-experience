@@ -296,6 +296,22 @@
         color: #2f1c13;
         font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
       }
+
+      .static-letter-closing-message {
+        margin-top: 1.25rem;
+        padding: clamp(1.1rem, 4vw, 1.8rem);
+        border: 1px solid rgba(198, 161, 90, 0.3);
+        border-radius: 1.3rem;
+        color: var(--ivory);
+        background: linear-gradient(145deg, rgba(66, 16, 27, 0.58), rgba(11, 8, 13, 0.84));
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+        text-align: center;
+      }
+
+      .static-letter-closing-message p {
+        color: var(--ivory);
+        font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      }
     </style>
   </head>
   <body>
@@ -415,6 +431,11 @@ A memory you can keep.
 
 With love,
 Jonathan</p></article>
+            <div id="static-letter-closing-message" class="static-letter-closing-message" hidden>
+              <p>Gracias por regalarme parte de tu tiempo.</p>
+              <p>Me hiciste feliz de una forma que no voy a olvidar, y aprendí mucho de ti.</p>
+              <p>Nunca dejes de sonreír, porque tu sonrisa tiene algo especial ♥</p>
+            </div>
         </section>
 
       </main>
@@ -432,6 +453,7 @@ Jonathan</p></article>
         const videoMessage = document.getElementById('static-video-message');
         const letterButton = document.getElementById('static-letter-button');
         const letter = document.getElementById('static-letter');
+        const letterClosingMessage = document.getElementById('static-letter-closing-message');
 
         enter?.addEventListener('click', () => {
           castle.hidden = false;
@@ -492,6 +514,7 @@ Jonathan</p></article>
 
         letterButton?.addEventListener('click', () => {
           letter.hidden = false;
+          letterClosingMessage.hidden = false;
         });
 
       })();
