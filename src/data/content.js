@@ -139,9 +139,5 @@ Jonathan`
       "No olvides sonreír siempre."
     ],
     signature: "Jonathan"
-  },
-  footer: {
-    text: "Made with intention by Jonathan.",
-    signature: "JAKS"
   }
 };
