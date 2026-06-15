@@ -1,4 +1,5 @@
 import { useId, useRef, useState } from 'react';
+import { asset } from '../data/content.js';
 import { useAssetAvailable } from '../utils/assets.js';
 
 export default function MusicPlayer({ content, variant = 'room' }) {
@@ -6,7 +7,7 @@ export default function MusicPlayer({ content, variant = 'room' }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const audioSrc = `${import.meta.env.BASE_URL}${content.src}`;
+  const audioSrc = asset(content.src);
   const isAudioAvailable = useAssetAvailable(audioSrc, 'audio/');
 
   const toggleMusic = async () => {
@@ -32,7 +33,6 @@ export default function MusicPlayer({ content, variant = 'room' }) {
       console.error('Audio play failed:', error);
       setHasError(true);
       setIsPlaying(false);
-      setShowYouTube(true);
     }
   };
 
@@ -55,6 +55,7 @@ export default function MusicPlayer({ content, variant = 'room' }) {
         }}
         onEnded={() => setIsPlaying(false)}
         onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
       />
 
       {isAudioAvailable === null && (
