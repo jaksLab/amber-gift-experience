@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { asset } from '../data/content.js';
 import { useAssetAvailable } from '../utils/assets.js';
 
 export default function ProcessVideo({ content }) {
   const [hasError, setHasError] = useState(false);
-  const videoSrc = `${import.meta.env.BASE_URL}${content.videoSrc}`;
+  const videoSrc = asset(content.videoSrc);
   const isVideoAvailable = useAssetAvailable(videoSrc, 'video/');
   const showFallback = hasError || isVideoAvailable === false;
 

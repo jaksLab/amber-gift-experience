@@ -99,7 +99,11 @@ export const giftContent = {
     roomLabel: "Ancient letter room",
     title: "A letter for you",
     button: "Open the Letter",
-    continueLabel: "Close the letter and open the last room",
+    closingMessage: `Gracias por regalarme parte de tu tiempo.
+
+Me hiciste feliz de una forma que no voy a olvidar, y aprendí mucho de ti.
+
+Nunca dejes de sonreír, porque tu sonrisa tiene algo especial ♥`,
     body: `My dear Amber,
 
 I wanted to make something that felt personal.
@@ -130,26 +134,5 @@ A memory you can keep.
 
 With love,
 Jonathan`
-  },
-  finalQuestion: {
-    eyebrow: "Final Room",
-    title: "The question",
-    text: "I know you like to take things slow, and I respect that. I don’t want to pressure you or rush anything. I just want to be honest with you. I care about you, I like what we are building, and I would love to keep choosing you with more intention.",
-    question: "Would you like to be my girlfriend?",
-    yesLabel: "Yes 🖤",
-    noLabels: [
-      "No",
-      "Are you sure?",
-      "Think about it…",
-      "But I made a castle…",
-      "Last chance?",
-      "no?"
-    ],
-    acceptedMessage: "You just made this night unforgettable.",
-    acceptedSubtext: "This little castle will always be here for you."
-  },
-  footer: {
-    text: "Made with intention by Jonathan.",
-    signature: "JAKS"
   }
 };
