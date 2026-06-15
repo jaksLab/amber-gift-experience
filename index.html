@@ -277,15 +277,34 @@
       }
 
       .static-letter-final-message {
+        display: grid;
+        gap: 0.45rem;
         margin-top: 1.35rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(118, 69, 26, 0.24);
-        color: #4b2018;
+        padding: clamp(1.25rem, 5vw, 2rem);
+        border: 1px solid rgba(198, 161, 90, 0.42);
+        border-radius: 1.25rem;
+        color: var(--ivory);
+        background: radial-gradient(circle at 50% 0%, rgba(255, 181, 95, 0.14), transparent 14rem), linear-gradient(145deg, rgba(66, 16, 27, 0.92), rgba(13, 7, 11, 0.96));
+        box-shadow: 0 0 42px rgba(111, 23, 39, 0.32), 0 0 30px rgba(255, 181, 95, 0.1);
         font-family: 'Cinzel', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-        font-size: clamp(1.12rem, 4vw, 1.45rem);
+        font-size: clamp(1.08rem, 4vw, 1.28rem);
         line-height: 1.7;
         text-align: center;
         white-space: normal;
+      }
+
+      .static-letter-final-message h2,
+      .static-letter-final-message p {
+        margin: 0;
+      }
+
+      .static-letter-final-message p {
+        color: var(--ivory);
+      }
+
+      .static-letter-signature {
+        margin-top: 0.55rem !important;
+        color: var(--gold-bright) !important;
       }
 
       .static-letter-closing {
@@ -415,7 +434,7 @@ This is yours.
 A memory you can keep.
 
 With love,
-Jonathan</p><div class="static-letter-final-message">gracias por brindarme de tu tiempo me hiciste feliz y aprendi mucho de ti no olvides sonreir simepre</div></article>
+Jonathan</p><aside class="static-letter-final-message"><p class="static-eyebrow">Final Note</p><h2>Para ti</h2><p>Gracias por brindarme de tu tiempo.</p><p>Me hiciste feliz y aprendí mucho de ti.</p><p>No olvides sonreír siempre.</p><p class="static-letter-signature">Jonathan</p></aside></article>
         </section>
       </main>
     </div>

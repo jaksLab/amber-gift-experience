@@ -26,7 +26,7 @@ export default function App() {
           <ProcessVideo content={giftContent.process} />
           <Gallery content={giftContent.gallery} />
           <AdorationList content={giftContent.adoration} />
-          <AncientLetter content={giftContent.letter} />
+          <AncientLetter content={giftContent.letter} closing={giftContent.closing} />
         </main>
       )}
     </div>

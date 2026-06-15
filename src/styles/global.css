@@ -862,17 +862,40 @@ h3 {
 .letter-final-message {
   display: grid;
   justify-items: center;
+  gap: 0.45rem;
   margin-top: var(--space-lg);
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(118, 69, 26, 0.24);
-  color: #4b2018;
-  font-size: clamp(1.12rem, 4vw, 1.45rem);
+  padding: clamp(1.25rem, 5vw, 2rem);
+  border: 1px solid rgba(198, 161, 90, 0.42);
+  border-radius: var(--radius-md);
+  color: var(--ivory);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 181, 95, 0.14), transparent 14rem),
+    linear-gradient(145deg, rgba(66, 16, 27, 0.92), rgba(13, 7, 11, 0.96));
+  box-shadow: 0 0 42px rgba(111, 23, 39, 0.32), 0 0 30px rgba(255, 181, 95, 0.1);
+  font-size: clamp(1.08rem, 4vw, 1.28rem);
   line-height: 1.7;
   text-align: center;
 }
 
+.letter-final-message h3,
 .letter-final-message p {
+  margin: 0;
+}
+
+.letter-final-message h3 {
+  color: var(--gold-bright);
+  font-size: clamp(1.65rem, 8vw, 2.8rem);
+}
+
+.letter-final-message p:not(.eyebrow) {
   max-width: 36rem;
+  color: var(--ivory);
+}
+
+.letter-final-signature {
+  margin-top: 0.55rem !important;
+  color: var(--gold-bright) !important;
+  font-family: var(--font-title);
 }
 
 .wax-seal {
